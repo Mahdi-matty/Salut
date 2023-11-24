@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS salut_db;
-CREATE DATABASE salut_db;
