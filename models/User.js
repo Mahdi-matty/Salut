@@ -42,7 +42,7 @@ User.init(
       type: DataTypes.INTEGER,
     },
     created_at: {
-      type: DataTypes.TIMESTAMP,
+      type: DataTypes.DATE,
     },
   },
   {

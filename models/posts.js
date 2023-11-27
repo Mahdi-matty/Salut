@@ -27,7 +27,7 @@ Post.init(
       allowNull: false,
     },
     created_at: {
-      type: TIMESTAMP,
+      type: DATE,
     },
   },
   {
