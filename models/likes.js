@@ -26,7 +26,7 @@ Likes.init(
       type: INTEGER,
     },
     created_at: {
-      type: TIMESTAMP,
+      type: Date,
     },
   },
   {
