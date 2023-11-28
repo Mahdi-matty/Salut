@@ -20,16 +20,16 @@ app.post("/login", (req, res) => {
 
 const { body, validationResult } = require("express-validator");
 
-app.post(
-  "/register",
-  [body("username").isLength({ min: 5 }), body("password").isStrongPassword()],
-  (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-  }
-);
+// app.post(
+//   "/register",
+//   [body("username").isLength({ min: 5 }), body("password").isStrongPassword()],
+//   (req, res) => {
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       return res.status(400).json({ errors: errors.array() });
+//     }
+//   }
+// );
 require("dotenv").config();
 const sequelize = require("./config/connection");
 const express = require("express");
