@@ -17,17 +17,17 @@ Post.init(
       autoIncrement: true,
     },
     title: {
-      type: VARCHAR,
+      type: DataTypes.STRING,
     },
     content: {
-      type: TEXT,
+      type: DataTypes.TEXT,
     },
     user_id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     created_at: {
-      type: DATE,
+      type: DataTypes.DATE,
     },
   },
   {
@@ -38,10 +38,10 @@ Post.init(
       },
     },
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'post',
+    // timestamps: false,
+    // freezeTableName: true,
+    // underscored: true,
+    // modelName: 'post',
   }
 );
 

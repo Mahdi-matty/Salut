@@ -1,9 +1,10 @@
 const allRoutes = require('./controllers');
 const session = require("express-session");
-
+const express = require("express");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+const sequelize = require('./config/connection');
 const app = express();
+const exphbs = require('express-handlebars');
 // these two line are for socket.io you can coment them if you want 
 const http = require('http').createServer(app);
 const io=require('socket.io')(http);
