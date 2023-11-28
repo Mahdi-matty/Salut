@@ -10,23 +10,29 @@ class Likes extends Model {
 
 Likes.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     Likes_user_id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
     },
     is_liked: {
-      type: BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     is_disliked: {
-      type: BOOLEAN,
+      type: DataTypes.BOOLEAN,
     },
     user_id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
     },
     post_id: {
-      type: INTEGER,
+      type: DataTypes.INTEGER,
     },
     created_at: {
-      type: Date,
+      type: DataTypes.DATE,
     },
   },
   {
@@ -37,10 +43,10 @@ Likes.init(
       },
     },
     sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'likes',
+    // timestamps: false,
+    // freezeTableName: true,
+    // underscored: true,
+    // modelName: 'likes',
   }
 );
 
