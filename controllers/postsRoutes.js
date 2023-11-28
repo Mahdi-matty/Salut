@@ -42,13 +42,13 @@ router.post("/", isAuthenticated, (req, res) => {
         title: req.body.title,
         content: req.body.content,
         user_id: req.body.user_id,
-        UserId: req.session.user.id,
+        // UserId: req.session.user.id,
       })
         .then((newPost) => {
           res.json(newPost);
         })
         .catch((err) => {
-          res.status(500).json({ msg: "oh no!", err });
+          res.status(500).json({ msg: "oh no!",err});
         });
     });
   //edit

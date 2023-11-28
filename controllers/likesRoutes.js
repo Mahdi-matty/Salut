@@ -11,6 +11,7 @@ router.get("/",(req,res)=>{
         res.status(500).json({msg:"oh no!",err})
     })
 })
+
 router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.send("logged out!")
@@ -44,7 +45,7 @@ router.post("/", isAuthenticated, (req, res) => {
         is_disliked: req.body.is_disliked,
         user_id: req.body.user_id,
         post_id: req.body.post_id,
-        UserId: req.session.user.id,
+        // UserId: req.session.user.id,
       })
         .then((newPost) => {
           res.json(newPost);
@@ -62,7 +63,7 @@ router.post("/", isAuthenticated, (req, res) => {
         is_disliked: req.body.is_disliked,
         user_id: req.body.user_id,
         post_id: req.body.post_id,
-        UserId: req.session.user.id,
+        // UserId: req.session.user.id,
       },
       {
         where: {
