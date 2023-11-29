@@ -9,11 +9,11 @@
     color: #ff5733; /* Replace with your desired color code */
   }
 </style>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="email" class="form-control emailNeeded" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
 
     <label for="exampleInputEmail1" class="form-label custom-text-color">Username</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="email" class="form-control userNameNeeded" id="exampleInputEmail1" name="username" aria-describedby="emailHelp">
     {{!-- <div id="emailHelp" class="form-text">Please choose a unique username.</div> --}}
 
   </div>
@@ -31,7 +31,7 @@
   }
 </style>
   </div>
-  <button type="submit" class="btn custom-btn-color">Submit</button>
+  <button type="submit" class="btn custom-btn-color" id="signUpForm">Submit</button>
   <style>
   .custom-btn-color {
     background-color: #ff5733; 
@@ -41,3 +41,4 @@
 </style>
 </form>
 </section>
+<script src="/js/signup.js"></script>
