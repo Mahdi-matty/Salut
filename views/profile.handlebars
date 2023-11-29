@@ -1,0 +1,29 @@
+<h2>Welcome, {{username}}!</h2>
+<div class="container-sm">
+      <button type="button" class="btn btn-primary">
+        Notifications <span class="badge bg-secondary">4</span>
+      </button>
+  <button type="button" class="btn btn-primary position-relative">
+    <a href="http://localhost:3000/followers">Followers</a>
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button>
+  <button type="button" class="btn btn-primary position-relative">
+    <a href="http://localhost:3000/following">following</a>
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button>
+
+  <button type="button" class="btn btn-primary position-relative">
+    <a href="http://localhost:3000/inbox">Inbox</a>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      99+
+      <span class="visually-hidden">unread messages</span>
+    </span>
+  </button>
+</div>
+{{#each posts as |post|}}
+  {{> home-details}}
+{{/each}}

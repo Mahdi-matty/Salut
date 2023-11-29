@@ -1,0 +1,17 @@
+<section class="d-flex justify-content-center align-items-center vh-100">
+<div class="container-sm">
+      <button type="button" class="btn btn-primary">
+        Notifications <span class="badge bg-secondary">4</span>
+      </button>
+
+  <button type="button" class="btn btn-primary position-relative">
+    <a href="http://localhost:3000//profile">Profile</a>
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button>
+</div>
+{{#each posts as |post|}}
+  {{> home-details}}
+{{/each}}
+</section>
