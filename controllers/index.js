@@ -10,6 +10,13 @@ const bcrypt = require("bcrypt");
 router.get("/",(req,res)=>{
     res.render("home")
 });
+// remove this
+router.get("/signup",(req,res)=>{
+    res.render("signup")
+});
+router.get("/login",(req,res)=>{
+    res.render("login")
+});
 
 router.use("/api/users",userRoutes);
 router.use("/api/likes",likesRoutes);
