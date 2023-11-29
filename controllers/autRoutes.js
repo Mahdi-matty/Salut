@@ -23,13 +23,26 @@ router.post("/register", (req, res) => {
 
 router.get("/sessiondata",(req,res)=>{
   res.json(req.session)
-})
+})  
 
+
+router.get("/signup",(req,res)=>{
+    res.render("signup")
+});
+
+router.get("/login",(req,res)=>{
+    res.render("login");
+});
+
+router.get("/logout",(req,res)=>{
+    res.render("logout");
+});
 
 // Login route
 
 router.post("/login",(req,res)=>{
     //1. find the user who is trying to login
+
     User.findOne({
         where:{
             username:req.body.username
