@@ -4,17 +4,40 @@
     <div class="mb-3">
         
         <h3 class="custom-text-color">Login</h3>
-        <label for="exampleInputEmail1" class="form-label custom-text-color">Username</label>
+        <label for="exampleInputEmail1" class="form-label custom-text-color" id="username">Username</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">            
     </div>
     <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label custom-text-color">Password</label>
+            <label for="exampleInputPassword1" class="form-label custom-text-color" id="password">Password</label>
             <input type="password" class="form-control" id="exampleInputPassword1">
             <div id="emailHelp" class="form-text">Password must be 8 characters long.</div>
     </div>
 
-    <button type="submit" class="btn custom-btn-color">Submit</button>
+    <button type="submit" class="btn custom-btn-color" id="loginForm">Submit</button>
 </form>
 
 </section>
+<script>
+    document.querySelector("#loginForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const userObj = {
+        username:document.querySelector("#username").value,
+        password:document.querySelector("#password").value
+    }
+    fetch("/api/users/login",{
+        method:"POST",
+        body:JSON.stringify(userObj),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    }).then(res=>{
+        if(res.ok){
+           location.href = "/profile";
+        } else {
+            alert("trumpet sound")
+        }
+    })
+
+});
+</script>
     
