@@ -53,6 +53,34 @@ router.post('/', isAuthenticated, async (req, res) => {
         res.status(500).json({ msg: "oh no!",err});
       });
   });
+  router.get('/:userId/followers', isAuthenticated, async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const followers = await Follow.findAll({
+        where: { followed_user_id: userId },
+        include: [{ model: User, as: 'follower' }], 
+      });
+  
+      res.render('followers-template', { followers });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  router.get('/:userId/following', isAuthenticated, async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const followings = await Follow.findAll({
+        where: { following_user_id: userId },
+        include: [{ model: User, as: 'following' }], 
+      });
+  
+      res.render('following-template', { followings });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 
 router.put("/:id", isAuthenticated, (req, res) => {
     follow.update(
