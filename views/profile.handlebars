@@ -27,3 +27,32 @@
 {{#each posts as |post|}}
   {{> home-details}}
 {{/each}}
+
+<section class="d-flex justify-content-center align-items-center vh-100">
+
+    <p>
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Lets Chat
+    </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <div>
+            <ul class="ugad"></ul>
+        </div>
+        <form class="ufad">
+                <label for="messageInput">Message:</label>
+                <input type="text" id="messageInput" name="messageInput" />
+                <button type="submit" id="usent" title="Send">Send</button>
+        </form>
+    </div>
+    </div>
+
+</section>
+
+
+
+<!-- Include Socket.IO library -->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="/js/chat.js"></script>
