@@ -34,6 +34,12 @@ router.get("/",(req,res)=>{
         res.status(500).send('Internal Server Error');
       }
     });
+    router.get("/followers",(req,res)=>{
+        res.render("follow");
+    });
+    router.get("/following",(req,res)=>{
+        res.render("follow");
+    });
 
 
 router.get("/profile",(req,res)=>{
