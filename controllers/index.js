@@ -5,6 +5,7 @@ const userRoutes = require('./userRoutes');
 const likesRoutes= require('./likesRoutes');
 const postRoutes = require('./postsRoutes');
 const autRoutes = require('./autRoutes');
+const followRoutes= require("./followRoutes");
 const bcrypt = require("bcrypt");
 
 
@@ -23,6 +24,7 @@ router.use("/api/users",userRoutes);
 router.use("/api/likes",likesRoutes);
 router.use("/api/posts",postRoutes);
 router.use("/api/",autRoutes);
+router.use("./api/follow", followRoutes);
 
 router.get("/",(req,res)=>{
     try {
