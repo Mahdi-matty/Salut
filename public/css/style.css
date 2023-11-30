@@ -1,0 +1,11 @@
+.sent-message {
+    text-align: right;
+    background-color: #4CAF50; /* Green color for sent messages */
+    color: white;
+}
+
+.received-message {
+    text-align: left;
+    background-color: #f1f1f1; /* Light gray color for received messages */
+    color: blue;
+}
