@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const {User,Likes, Posts} = require('../models');
+const isMyPost = require('../middleware/isMyPost');
 
 //find all
 router.get("/",(req,res)=>{
@@ -44,7 +45,7 @@ router.post("/",(req,res)=>{
     })
 })
 //login
-router.post("/login",(req,res)=>{
+router.get("/login",(req,res)=>{
     //1. find the user who is trying to login
     User.findOne({
         where:{
@@ -67,7 +68,7 @@ router.post("/login",(req,res)=>{
     })
 })
 //edit
-router.put("/:id",(req,res)=>{
+router.put("/:id",isMyPost,(req,res)=>{
     User.update({
         username:req.body.username,
         password:req.body.password,
@@ -89,7 +90,7 @@ router.put("/:id",(req,res)=>{
     })
 })
 //delete
-router.delete("/:id",(req,res)=>{
+router.delete("/:id",isMyPost,(req,res)=>{
     User.destroy({
         where:{
             id:req.params.id

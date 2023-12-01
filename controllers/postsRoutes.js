@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const isMyPost = require("../middleware/isMyPost");
 const {User,Likes, Posts} = require('../models');
 
 //find all
@@ -15,10 +16,14 @@ router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.send("logged out!")
 })
-//find one
+
+//query or route to find posts linked to a single user
 router.get("/:id",(req,res)=>{
-    Posts.findByPk(req.params.id,{
-        include:[User, Likes]
+    Posts.findAll({
+      where:{
+        user_id:req.params.id
+      },
+      include:[User, Likes]
     }).then(dbPosts=>{
         if(!dbPosts){
             res.status(404).json({msg:"no such post!"})
@@ -29,6 +34,7 @@ router.get("/:id",(req,res)=>{
         res.status(500).json({msg:"oh no!",err})
     })
 });
+
 const isAuthenticated = (req, res, next) => {
   if (!req.session.user) {
     res.status(403).json({ msg: "Login first to perform this action!" });

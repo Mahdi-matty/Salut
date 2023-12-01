@@ -1,5 +1,6 @@
+<section class = "d-flex bd-highlight flex-column mb-3">
 
-<div class="navbar second-nav navbar-expand-lg bg-body-tertiary">
+<div class="navbar p-2 second-nav navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +8,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Profile</a>
+        <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
         <a class="nav-link" href="#">Followers</a>
         <a class="nav-link" href="#">Following</a>
       </div>
@@ -17,25 +18,26 @@
 
 
 {{!-- Added Ryans changes above --}}
-<section class="d-flex justify-content-center align-items-center vh-100">
+
 <div class="container-sm">
       <button type="button" class="btn btn-primary">
         Notifications <span class="badge bg-secondary">4</span>
       </button>
 
+<a href="/profile">
   <button type="button" class="btn btn-primary position-relative">
-    <a href="http://localhost:3000//profile">Profile</a>
+    Profile
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
-  </button>
+  </button></a>
 </div>
+
 {{#each posts as |post|}}
   {{> home-details}}
 {{/each}}
-</section>
 
-<section class="d-flex justify-content-center align-items-center vh-100">
+
 
     <p>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -55,7 +57,7 @@
     </div>
     </div>
 
-</section>
+
 
 
 
@@ -63,3 +65,4 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script src="/js/chat.js"></script>
+</section>

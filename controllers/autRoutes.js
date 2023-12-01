@@ -42,7 +42,7 @@ router.get("/logout",(req,res)=>{
 
 router.post("/login",(req,res)=>{
     //1. find the user who is trying to login
-
+    res.render("login");
     User.findOne({
         where:{
             username:req.body.username
