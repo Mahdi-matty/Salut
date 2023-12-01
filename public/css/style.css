@@ -9,3 +9,17 @@
     background-color: #f1f1f1; /* Light gray color for received messages */
     color: blue;
 }
+.second-nav {
+    padding-top: 65px;
+    background-color: rgb(221, 98, 67);
+    color: black;
+  }
+.contents {
+    height: 500px;
+    width: 500px;
+    background-color: rgb(221, 98, 67);
+    margin-left: 400px;
+    margin-top: 200px;
+
+  }
+  
