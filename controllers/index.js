@@ -15,7 +15,6 @@ const bcrypt = require("bcrypt");
 // });
 
 //Ryan's code
-
 // router.get("/login",(req,res)=>{
 //     res.render("login")
 // });
