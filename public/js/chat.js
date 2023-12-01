@@ -3,18 +3,21 @@ const socket = io();
   const messageList = document.querySelector('.ugad');
   const form = document.querySelector('#usent');
   const input = document.querySelector('#messageInput');
+  const userNom= document.querySelector(".userNome");
 
   function sendMessage(e){
     e.preventDefault();
-    socket.emit('message', input.value);
+    const newMsg = input.value;
+    socket.emit('message', {userNom: userNom.innerText, newMsg});
 
     input.value= "";
 }
 form.addEventListener('click', sendMessage);
 
-function addMessage(message, isSent) {
+function addMessage(messageData, isSent) {
+    const {userNom, newMsg} = messageData;
     const li = document.createElement('li');
-    li.innerText = message;
+    li.innerText = `${userNom}: ${newMsg}`;
 
     if (isSent) {
         li.classList.add('sent-message');
@@ -25,12 +28,12 @@ function addMessage(message, isSent) {
     messageList.append(li);
 }
 
-socket.on("message", message => {
-    addMessage(message, true);
+socket.on("message", messageData => {
+    addMessage(messageData, true);
 });
 
-socket.on("receivedMessage", message => {
-    addMessage(message, false); 
+socket.on("receivedMessage", messageData => {
+    addMessage(messageData, false); 
 });
 
 function alertUser() {
