@@ -34,12 +34,24 @@ router.get("/",(req,res)=>{
         res.status(500).send('Internal Server Error');
       }
     });
-    router.get("/followers",(req,res)=>{
-        res.render("follow");
-    });
-    router.get("/following",(req,res)=>{
-        res.render("follow");
-    });
+    router.get("/:userId/followers",(req,res)=>{
+        if(!req.session.user){
+            res.redirect("/login")
+        } else {
+            res.render("follow",{
+                username:req.session.user.username
+            })  
+        }
+    })
+    router.get("/:userId/following",(req,res)=>{
+        if(!req.session.user){
+            res.redirect("/login")
+        } else {
+            res.render("follow",{
+                username:req.session.user.username
+            })  
+        }
+    })
 
 
 router.get("/profile",(req,res)=>{
