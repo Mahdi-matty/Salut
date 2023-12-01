@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Followers</title>
+    <link rel="stylesheet" type="text/css" href="inbox.css" />
+  </head>
+  <body>
+    <h1>Inbox</h1>
+
+    <form id="searchForm" action="#" method="GET">
+      <!-- <label for="search">Search:</label> -->
+      <input
+        type="text"
+        id="search"
+        name="search"
+        placeholder="search messages"
+      />
+      <button type="submit" id="searchButton">&#128269;</button>
+    </form>
+
+    <div id="searchResults"></div>
+
+    <script>
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var searchValue = document.getElementById("search").value;
+          var resultsContainer = document.getElementById("searchResults");
+          resultsContainer.innerHTML =
+            "<p>Search results for: " + searchValue + "</p>";
+        });
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var searchValue = document.getElementById("search").value;
+          updateFollowers(searchValue);
+        });
+
+      function updateFollowers(searchValue) {
+        var followersContainer = document.getElementById("followersContainer");
+
+        var followersData = [
+          { name: "Follower 1" },
+          { name: "Follower 2" },
+          { name: "Follower 3" },
+        ];
+
+        var filteredFollowers = followersData.filter(function (follower) {
+          return follower.name
+            .toLowerCase()
+            .includes(searchValue.toLowerCase());
+        });
+
+        followersContainer.innerHTML = "";
+
+        if (searchValue) {
+          followersContainer.innerHTML =
+            "<p>Search results for: " + searchValue + "</p>";
+        }
+
+        var table = document.createElement("table");
+        var tbody = document.createElement("tbody");
+
+        filteredFollowers.forEach(function (follower) {
+          var row = tbody.insertRow();
+          var cell = row.insertCell(0);
+          cell.textContent = follower.name;
+        });
+
+        table.appendChild(tbody);
+        followersContainer.appendChild(table);
+      }
+    </script>
+  </body>
+</html>

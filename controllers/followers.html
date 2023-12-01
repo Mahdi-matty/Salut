@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Followers</title>
+    <link rel="stylesheet" type="text/css" href="followers.css" />
+  </head>
+  <body>
+    <h1>Followers</h1>
+
+    <form id="searchForm" action="#" method="GET">
+      <!-- <label for="search">Search:</label> -->
+      <input
+        type="text"
+        id="search"
+        name="search"
+        placeholder="search for followers"
+      />
+      <button type="submit" id="searchButton">&#128269;</button>
+    </form>
+
+    <div id="searchResults"></div>
+
+    <script>
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          var searchValue = document.getElementById("search").value;
+          var resultsContainer = document.getElementById("searchResults");
+          resultsContainer.innerHTML =
+            "<p>Search results for: " + searchValue + "</p>";
+        });
+    </script>
+  </body>
+</html>
