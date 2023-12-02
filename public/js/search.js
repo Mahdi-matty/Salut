@@ -8,7 +8,7 @@ document.querySelector(".usersearchBtn").addEventListener("click", async functio
                 'Content-Type': 'application/json',
             },
         });
-
+        console.log(response);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -17,7 +17,7 @@ document.querySelector(".usersearchBtn").addEventListener("click", async functio
         const matchingUser = users.find(user => user.username === searchData);
 
         if (matchingUser) {
-            window.location.href = `/api/users/by-username/${encodeURIComponent(matchingUser.username)}`;
+            window.location.href = `/api/users/findUser/${encodeURIComponent(matchingUser.username)}`;
         } else {
             console.log("User not found");
         }
