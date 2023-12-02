@@ -32,6 +32,7 @@ router.get("/:id",(req,res)=>{
     })
 })
 
+
 //find by username
 router.get("/findUser/:username",(req,res)=>{
     User.findOne({
@@ -53,6 +54,7 @@ router.get("/findUser/:username",(req,res)=>{
         res.status(500).json({msg:"oh no!",err})
     })
 });
+
 
 //create
 router.post("/",(req,res)=>{

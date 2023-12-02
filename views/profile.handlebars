@@ -19,10 +19,48 @@
   <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4"/>
 </svg>
 </button>
-
+<button type="button" class="btn btn-primary" id="followBtn">Follow</button>
 
 
 </div>
+
+<div class="user-btns">
+      <button type="button" class="btn btn-primary">
+        Notifications <span class="badge bg-secondary">4</span>
+      </button>
+  <button type="button" class="btn btn-primary position-relative">Followers
+    <a href="http://localhost:3000/followers"></a>
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button>
+  <button type="button" class="btn btn-primary position-relative">Following
+    <a href="http://localhost:3000/following"></a>
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button>
+
+  <button type="button" class="btn btn-primary position-relative">Inbox
+    <a href="http://localhost:3000/inbox"></a>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      99+
+      <span class="visually-hidden">unread messages</span>
+    </span>
+  </button>
+  <style> 
+    .user-btns {
+      height: 40px;
+      width: 100%;
+      background-color: #252525;
+      display: flex;
+      justify-content: left;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+  </style>
+</div>
+
 
 <div class="p2">
 
@@ -69,7 +107,7 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 <div class="p-2 bd-highlight">
 {{!-- <section class="d-flex justify-content-center align-items-center vh-100">--}}
     <p>
-      <button type="button" class="btn btn-primary" id="followBtn">Follow</button>
+      {{!-- <button type="button" class="btn btn-primary" id="followBtn">Follow</button> --}}
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Lets Chat
     </a>
@@ -90,7 +128,7 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 
 </div>
 
-<div class="p2 bd-highlight">
+{{!-- <div class="p2 bd-highlight">
       <button type="button" class="btn btn-primary">
         Notifications <span class="badge bg-secondary">4</span>
       </button>
@@ -117,7 +155,7 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 </button>
 
 
-</div>
+</div> --}}
 
 <br>
 

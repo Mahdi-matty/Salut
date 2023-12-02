@@ -25,8 +25,53 @@
 
 
 {{!-- Added Ryans changes above --}}
+<div class="p-2 bd-highlight">
 
-<div class="container-sm">
+</div>
+<div class="home-btns">
+  <button type="button" class="btn btn-primary">
+        Notifications <span class="badge bg-secondary">4</span>
+      </button>
+
+<a href="/profile">
+  <button type="button" class="btn btn-primary position-relative">
+    Profile
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button></a>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Lets Chat
+    </a>
+  <style>
+    .home-btns {
+      background-color: #252525;
+      height: 40px;
+      width: 50%;
+    }
+  </style>
+</div>
+
+<section class="tweets">
+  <ul class="list-group">
+  <li class="list-group-item">Tweets can be displayed here</li>
+  <li class="list-group-item">in this sectione</li>
+  
+</ul>
+<style>
+  .tweets {
+    background-color: salmon;
+    height: 800px;
+    width: 800px;
+    margin-top: 30px;
+    margin-left: 300px;
+    border-radius: 10px;
+  }
+</style>
+</section>
+{{!-- Added Ryans changes above --}}
+
+{{!-- <div class="container-sm">
       <button type="button" class="btn btn-primary">
         Notifications <span class="badge bg-secondary">4</span>
       </button>
@@ -38,7 +83,7 @@
       <span class="visually-hidden">New alerts</span>
     </span>
   </button></a>
-</div>
+</div> --}}
 
 {{#each posts as |post|}}
   {{> home-details}}
@@ -46,11 +91,11 @@
 
 
 
-    <p>
+    {{!-- <p>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Lets Chat
     </a>
-    </p>
+    </p> --}}
     <div class="collapse" id="collapseExample">
     <div class="card card-body">
         <div>
