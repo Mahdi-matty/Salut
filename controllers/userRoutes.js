@@ -30,6 +30,21 @@ router.get("/:id",(req,res)=>{
         res.status(500).json({msg:"oh no!",err})
     })
 })
+
+router.get("/by-username/:username", (req, res) => {
+    User.findOne({
+        where: { username: req.params.username },
+        include: [Posts, Likes]
+    }).then(dbUser => {
+        if (!dbUser) {
+            res.status(404).json({ msg: "no such user!" })
+        } else {
+            res.json(dbUser)
+        }
+    }).catch(err => {
+        res.status(500).json({ msg: "oh no!", err })
+    })
+})
 //create
 router.post("/",(req,res)=>{
     User.create({
