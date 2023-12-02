@@ -18,8 +18,62 @@
 
 
 {{!-- Added Ryans changes above --}}
+<div class="p-2 bd-highlight">
 
-<div class="container-sm">
+<button id="followBtn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="blue" class="bi bi-person-fill-add" viewBox="0 0 16 16">
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+  <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4"/>
+</svg>
+</button>
+<button type="button" class="btn btn-primary" id="followBtn">Follow</button>
+
+
+</div>
+<div class="home-btns">
+  <button type="button" class="btn btn-primary">
+        Notifications <span class="badge bg-secondary">4</span>
+      </button>
+
+<a href="/profile">
+  <button type="button" class="btn btn-primary position-relative">
+    Profile
+    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+      <span class="visually-hidden">New alerts</span>
+    </span>
+  </button></a>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Lets Chat
+    </a>
+  <style>
+    .home-btns {
+      background-color: #252525;
+      height: 40px;
+      width: 50%;
+    }
+  </style>
+</div>
+
+<section class="tweets">
+  <ul class="list-group">
+  <li class="list-group-item">Tweets can be displayed here</li>
+  <li class="list-group-item">in this sectione</li>
+  
+</ul>
+<style>
+  .tweets {
+    background-color: salmon;
+    height: 800px;
+    width: 800px;
+    margin-top: 30px;
+    margin-left: 300px;
+    border-radius: 10px;
+  }
+</style>
+</section>
+{{!-- Added Ryans changes above --}}
+
+{{!-- <div class="container-sm">
       <button type="button" class="btn btn-primary">
         Notifications <span class="badge bg-secondary">4</span>
       </button>
@@ -31,7 +85,7 @@
       <span class="visually-hidden">New alerts</span>
     </span>
   </button></a>
-</div>
+</div> --}}
 
 {{#each posts as |post|}}
   {{> home-details}}
@@ -39,11 +93,11 @@
 
 
 
-    <p>
+    {{!-- <p>
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Lets Chat
     </a>
-    </p>
+    </p> --}}
     <div class="collapse" id="collapseExample">
     <div class="card card-body">
         <div>
