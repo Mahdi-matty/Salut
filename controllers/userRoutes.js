@@ -16,6 +16,7 @@ router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.send("logged out!")
 })
+
 //find one
 router.get("/:id",(req,res)=>{
     User.findByPk(req.params.id,{
@@ -31,20 +32,30 @@ router.get("/:id",(req,res)=>{
     })
 })
 
-router.get("/by-username/:username", (req, res) => {
+
+//find by username
+router.get("/findUser/:username",(req,res)=>{
     User.findOne({
-        where: { username: req.params.username },
-        include: [Posts, Likes]
-    }).then(dbUser => {
-        if (!dbUser) {
-            res.status(404).json({ msg: "no such user!" })
-        } else {
-            res.json(dbUser)
+        include:[Posts, Likes],
+        where: {
+            username: req.params.username,
+    }}).then(foundUser=>{
+        if(!foundUser){
+            res.status(404).json({msg:"no such user!"})
+        } else{
+            res.render("foundUser",
+            {
+                users:foundUser.toJSON()
+            })
+            // res.json(foundUser)
         }
-    }).catch(err => {
-        res.status(500).json({ msg: "oh no!", err })
+
+    }).catch(err=>{
+        res.status(500).json({msg:"oh no!",err})
     })
-})
+});
+
+
 //create
 router.post("/",(req,res)=>{
     User.create({
