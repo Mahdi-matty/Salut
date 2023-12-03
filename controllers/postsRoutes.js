@@ -43,20 +43,47 @@ const isAuthenticated = (req, res, next) => {
   }
 };
 
+function extractHashtags(text) {
+  const regex = /#(\w+)/g;
+  console.log("Extracted Hashtags:", regex);
+  const matches = text.match(regex);
+  return matches ? matches.join(",") : null;
+}
 router.post("/", isAuthenticated, (req, res) => {
-      Posts.create({
-        title: req.body.title,
-        content: req.body.content,
-        user_id: req.body.user_id,
-        // UserId: req.session.user.id,
-      })
-        .then((newPost) => {
-          res.json(newPost);
-        })
-        .catch((err) => {
-          res.status(500).json({ msg: "oh no!",err});
-        });
+  const { title, content, user_id } = req.body;
+  console.log("Received Request Data:", { title, content, user_id });
+  const hashtags = extractHashtags(title);
+  Posts.create({
+    title,
+    content,
+    user_id,
+    hashtags,
+  })
+    .then((newPost) => {
+      res.json(newPost);
+    })
+    .catch((err) => {
+      res.status(500).json({ msg: "oh no!", err });
     });
+});
+router.get('/search', (req, res) => {
+  const { tag } = req.query;
+  console.log('Received Search Query:', tag);
+  
+  Posts.findAll({
+    where: {
+      title: {
+        [Op.like]: `%#${tag}%`,
+      },
+    }})
+    .then((searchResults) => {
+      console.log('Search Results:', searchResults);
+      res.json(searchResults);
+    })
+    .catch((err) => {
+      res.status(500).json({ msg: "Error during search", err });
+    });
+});
   //edit
   router.put("/:id", isAuthenticated, (req, res) => {
     Posts.update(
