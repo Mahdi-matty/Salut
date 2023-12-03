@@ -9,7 +9,7 @@ document.querySelector("#submitBtn").addEventListener("click",e=>{
     e.preventDefault();
     console.log(document.querySelector(".form-control"));
     const postObj = {
-        title:document.querySelector(".form-control").value,
+        title:document.querySelector(".titleSearchProf").value,
         content:document.querySelector("#content").value,
         user_id:curr_user_id
     }
