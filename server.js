@@ -41,7 +41,24 @@ app.use(session(sess));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+    helpers: {
+      processTitle: function (title) {
+        console.log('Title:', title);
+        if (typeof title === 'string' && title.trim() !== '') {
+          const words = title.split(" ");
+          return words.map(word => {
+            return {
+              word: word,
+              isHashTag: word.startsWith('#')
+            };
+          });
+          } else {
+            return [];
+          }
+        }
+      }
+    });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

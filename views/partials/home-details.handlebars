@@ -1,7 +1,9 @@
-<p style="color:aliceblue">Do I work?</p>
+<p style="color:aliceblue"></p>
 <div class="tweets">
   <ul class="list-group">
-  <strong><li class="list-group-item">{{title}}</li></strong>
+  {{#each (processTitle title) as |wordObj|}}
+        <a href="/api/posts/search?tag={{wordObj.word}}">{{wordObj.word}}</a>
+    {{/each}}
   <li class="list-group-item">{{content}}</li>
   <br>
 </ul>
