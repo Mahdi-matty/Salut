@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {User,Posts, Likes, follow} = require("../models");
+const bcrypt = require("bcrypt");
 
 router.get("/", (req, res)=>{
     Posts.findAll().then(dbPosts=>{
