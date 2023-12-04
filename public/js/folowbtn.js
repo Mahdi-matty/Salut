@@ -1,6 +1,6 @@
 // let curr_user_id;
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("api/sessiondata").then(res=>res.json()).then(res2=>{
+  fetch("/sessiondata").then(res=>res.json()).then(res2=>{
       console.log(res2.user.id);
       curr_user_id = res2.user.id;
   });
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            following_user_id: curr_user_id,
-            followed_user_id: userIdFollow
+            following_user_id: userIdFollow,
+            followed_user_id: curr_user_id
           }),
         });
         // console.log(response);
