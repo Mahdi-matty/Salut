@@ -1,19 +1,95 @@
-<p style="color:aliceblue"></p>
+<p style="color: aliceblue"></p>
 <div class="tweets">
   <ul class="list-group">
-  
-<span><img src = "{{User.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{User.username}}</span>
-  {{#each (processTitle title) as |wordObj|}}
-        <a href="/api/posts/search?tag={{wordObj.word}}" class = "list-group-item">{{wordObj.word}}</a>
+    <span>
+      <img src="{{User.profilePic}}" width="60" height="60" style="border-radius: 50%" /> {{User.username}}
+    </span>
+    {{#each (processTitle title) as |wordObj|}}
+      <a href="/api/posts/search?tag={{wordObj.word}}" class="list-group-item">{{wordObj.word}}</a>
     {{/each}}
     <h6 class="idInNeed" style="display: none;">{{id}}</h6>
-  <li class="list-group-item">{{content}}</li>
+    <li class="list-group-item">{{content}}</li>
     {{#if imageSource}}
-  <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
-    
-  {{/if}}
-  <button type="button" class="btn btn-primary btn-sm likeBtn">like</button><p class="likeCount">0</p>
-  <button type="button" class="btn btn-primary btn-sm deleteBtn">Delete</button>
-  <br>
-</ul>
+      <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500" /></li>
+    {{/if}}
+
+
+    <li class="list-group-item">
+      <h6>Comments:</h6>
+      <ul class="commentsList">
+        {{#each comments as |comment|}}
+          <li>
+            <span>{{comment.user}}:</span> {{comment.text}}
+            <button type="button" class="btn btn-primary btn-sm replyBtn">Reply</button>
+            <ul class="repliesList">
+              {{#each comment.replies as |reply|}}
+                <li><span>{{reply.user}}:</span> {{reply.text}}</li>
+              {{/each}}
+            </ul>
+            <form class="replyForm" style="display: none;">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Add a reply..." />
+                <button type="submit" class="btn btn-primary btn-sm">Reply</button>
+              </div>
+            </form>
+          </li>
+        {{/each}}
+      </ul>
+
+      <form class="commentForm">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Add a comment..." />
+          <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+        </div>
+      </form>
+    </li>
+
+    <button type="button" class="btn btn-primary btn-sm likeBtn">Like</button>
+    <p class="likeCount">0</p>
+    <button type="button" class="btn btn-primary btn-sm deleteBtn">Delete</button>
+    <br>
+  </ul>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  document.querySelectorAll('.commentForm').forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+
+      const commentText = this.querySelector('input').value;
+
+
+      const commentItem = document.createElement('li');
+      commentItem.innerHTML = `<span>{{User.username}}:</span> ${commentText}
+          <button type="button" class="btn btn-primary btn-sm replyBtn">Reply</button>
+          <ul class="repliesList"></ul>
+          <form class="replyForm" style="display: none;">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Add a reply..." />
+              <button type="submit" class="btn btn-primary btn-sm">Reply</button>
+            </div>
+          </form>`;
+
+      this.parentElement.querySelector('.commentsList').appendChild(commentItem);
+
+      this.querySelector('input').value = '';
+    });
+  });
+
+  document.querySelectorAll('.replyBtn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const replyForm = this.parentElement.querySelector('.replyForm');
+      replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+</script>
+
+</body>
+
+</html>

@@ -1,14 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {User,Posts, Likes, follow} = require("../models");
-const userRoutes = require('./userRoutes');
-const likesRoutes= require('./likesRoutes');
-const postRoutes = require('./postsRoutes');
-const autRoutes = require('./autRoutes');
-const followRoutes= require("./followRoutes");
-const htmlRoutes= require("./htmlRoutes");
+const { User, Posts, Likes, follow } = require("../models");
+const userRoutes = require("./userRoutes");
+const likesRoutes = require("./likesRoutes");
+const postRoutes = require("./postsRoutes");
+const autRoutes = require("./autRoutes");
+const followRoutes = require("./followRoutes");
+const htmlRoutes = require("./htmlRoutes");
 const bcrypt = require("bcrypt");
-
 
 // remove this
 // router.get("/signup",(req,res)=>{
@@ -21,12 +20,11 @@ const bcrypt = require("bcrypt");
 // });
 
 router.use("/", htmlRoutes);
-router.use("/api/users",userRoutes);
-router.use("/api/likes",likesRoutes);
-router.use("/api/posts",postRoutes);
-router.use("/api/",autRoutes);
+router.use("/api/users", userRoutes);
+router.use("/api/likes", likesRoutes);
+router.use("/api/posts", postRoutes);
+router.use("/api/", autRoutes);
 router.use("/api/follow", followRoutes);
-
 
 // router.get("/",(req,res)=>{
 //     try {
@@ -42,7 +40,7 @@ router.use("/api/follow", followRoutes);
 //         } else {
 //             res.render("follow",{
 //                 username:req.session.user.username
-//             })  
+//             })
 //         }
 //     })
 //     router.get("/:userId/following",(req,res)=>{
@@ -51,10 +49,9 @@ router.use("/api/follow", followRoutes);
 //         } else {
 //             res.render("follow",{
 //                 username:req.session.user.username
-//             })  
+//             })
 //         }
 //     })
-
 
 // router.get("/profile",(req,res)=>{
 //     if(!req.session.user){
@@ -65,11 +62,25 @@ router.use("/api/follow", followRoutes);
 //         }).then(dbUser=>{
 //             const hbsUser = dbUser.toJSON()
 //             console.log('hbsUsers: ',hbsUser)
-//             res.render("profile",hbsUser)  
+//             res.render("profile",hbsUser)
 //         })
 //     }
 // })
 
+const express = require("express");
+const sequelize = require("./config/connection");
+const commentRoutes = require("./routes/commentRoutes");
 
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(commentRoutes);
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
+});
 
 module.exports = router;
