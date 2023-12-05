@@ -134,5 +134,9 @@ router.get("/profile",(req,res)=>{
     }
 });
 
+router.get("/:userId/inbox",(req,res)=>{
+    res.render("inbox")
+});
+
 
 module.exports = router;

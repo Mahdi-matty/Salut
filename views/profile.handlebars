@@ -53,20 +53,20 @@ document.getElementById("upload_widget").addEventListener("click", function(){
         Notifications <span class="badge bg-secondary">4</span>
       </button>
   <button type="button" class="btn btn-primary position-relative">
-    <a href="http://localhost:3000/:userId/followers">Followers</a>
+    <a href="http://localhost:3000/:userId/followers" style="color:white">Followers</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
   </button>
   <button type="button" class="btn btn-primary position-relative">
-    <a href="http://localhost:3000/:userId/following">Following</a>
+    <a href="http://localhost:3000/:userId/following" style="color:white">Following</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
   </button>
 
-  <button type="button" class="btn btn-primary position-relative">Inbox
-    <a href="http://localhost:3000/inbox"></a>
+  <button type="button" class="btn btn-primary position-relative">
+    <a href="http://localhost:3000/:userId/inbox" style="color:white">Inbox</a>
     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
       99+
       <span class="visually-hidden">unread messages</span>
