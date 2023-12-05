@@ -1,0 +1,40 @@
+<p>Do I work?</p>
+
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+      <div class="card card-body" id="followers-container">
+        <h3>Followers</h3>
+        {{#each followers as |follower|}}
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{follower.username}}
+                {{#if follower.Follow.id}}
+                <span class="badge bg-primary">Following</span>
+              {{/if}}
+            </li>
+        </ul>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body" id="following-container">
+        <h3>Following</h3>
+         {{#each followings as |following|}}
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{following.username}}
+                {{#if following.Follow.id}}
+                <span class="badge bg-primary">Following</span>
+              {{/if}}
+            </li>
+        </ul>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/follow.js"></script>

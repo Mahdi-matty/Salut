@@ -29,7 +29,7 @@ Follow.init(
   },
   {
     sequelize
-}
+  }
 );
 
 module.exports = Follow;

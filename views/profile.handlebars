@@ -1,8 +1,6 @@
 <section class="d-flex bd-highlight flex-column mb-3">
   {{!-- <section class="d-flex justify-content-center align-items-center vh-100"></section> --}}
 
-
-
 <div class="p-2 bd-highlight">
 <h2 class="userNome" style="color:white">{{users.username}}</h2>
 
@@ -53,13 +51,13 @@ document.getElementById("upload_widget").addEventListener("click", function(){
         Notifications <span class="badge bg-secondary">4</span>
       </button>
   <button type="button" class="btn btn-primary position-relative">
-    <a href="http://localhost:3000/:userId/followers" style="color:white">Followers</a>
+    <a href="/:userId/followers" style="color:white">Followers</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
   </button>
   <button type="button" class="btn btn-primary position-relative">
-    <a href="http://localhost:3000/:userId/following" style="color:white">Following</a>
+    <a href="/:userId/following" style="color:white">Following</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
