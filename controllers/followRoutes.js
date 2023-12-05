@@ -56,12 +56,12 @@ router.post('/', isAuthenticated, async (req, res) => {
   router.get('/:userId/followers', isAuthenticated, async (req, res) => {
     try {
       const userId = req.params.userId;
-      const followers = await Follow.findAll({
+      const followers = await follow.findAll({
         where: { followed_user_id: userId },
-        include: [{ model: User, as: 'follower' }], 
+        include: [{ model: User, as: 'followers' }], 
       });
   
-      res.render('followers-template', { followers });
+      res.json(followers)
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
@@ -70,12 +70,12 @@ router.post('/', isAuthenticated, async (req, res) => {
   router.get('/:userId/following', isAuthenticated, async (req, res) => {
     try {
       const userId = req.params.userId;
-      const followings = await Follow.findAll({
+      const followings = await follow.findAll({
         where: { following_user_id: userId },
         include: [{ model: User, as: 'following' }], 
       });
   
-      res.render('following-template', { followings });
+      res.json(followings);
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');

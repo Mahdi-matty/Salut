@@ -23,6 +23,14 @@ Posts.belongsTo(User, {
 User.hasMany(Posts,{
     foreignKey:'user_id',
 });
+follow.belongsTo(User, {
+    foreignKey: "following_user_id",
+    as: "followers"
+});
+follow.belongsTo(User, {
+    foreignKey: "followed_user_id",
+    as: "following"
+});
 
 User.belongsToMany(User, {
     through: "follow",

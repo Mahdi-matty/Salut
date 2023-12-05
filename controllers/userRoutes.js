@@ -32,7 +32,24 @@ router.get("/:id",(req,res)=>{
     })
 })
 
-
+router.get('/getUserIdByUsername/:username', async (req, res) => {
+    try {
+      const username = req.params.username;
+      const user = await User.findOne({
+        where: { username: username },
+        attributes: ['id'],
+      });
+  
+      if (user) {
+        res.json({ userId: user.id });
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 //find by username
 router.get("/findUser/:username",(req,res)=>{
     User.findOne({
