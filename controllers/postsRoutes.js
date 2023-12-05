@@ -50,14 +50,15 @@ function extractHashtags(text) {
   return matches ? matches.join(",") : null;
 }
 router.post("/", isAuthenticated, (req, res) => {
-  const { title, content, user_id } = req.body;
+  const { title, content,imageSource, user_id } = req.body;
   console.log("Received Request Data:", { title, content, user_id });
   const hashtags = extractHashtags(title);
   Posts.create({
     title,
     content,
+    imageSource,
     user_id,
-    hashtags,
+    // hashtags,
   })
     .then((newPost) => {
       res.json(newPost);

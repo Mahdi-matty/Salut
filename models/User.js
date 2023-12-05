@@ -35,6 +35,9 @@ User.init(
         isEmail: true,
       },
     },
+    profilePic: {
+      type: DataTypes.STRING,
+    },
     following_user_id: {
       type: DataTypes.INTEGER,
     },

@@ -94,11 +94,12 @@ router.get("/login",(req,res)=>{
     })
 })
 //edit
-router.put("/:id",isMyPost,(req,res)=>{
+router.put("/:id",(req,res)=>{
     User.update({
         username:req.body.username,
         password:req.body.password,
         email: req.body.email,
+        profilePic: req.body.profilePic,
         following_user_id: req.body.following_user_id,
         followed_user_id: req.body.followed_user_id
     },{

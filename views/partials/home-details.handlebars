@@ -1,10 +1,16 @@
 <p style="color:aliceblue"></p>
 <div class="tweets">
   <ul class="list-group">
+  
+<span><img src = "{{User.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{User.username}}</span>
   {{#each (processTitle title) as |wordObj|}}
-        <a href="/api/posts/search?tag={{wordObj.word}}">{{wordObj.word}}</a>
+        <a href="/api/posts/search?tag={{wordObj.word}}" class = "list-group-item">{{wordObj.word}}</a>
     {{/each}}
   <li class="list-group-item">{{content}}</li>
+    {{#if imageSource}}
+  <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
+    
+  {{/if}}
   <br>
 </ul>
 </div>

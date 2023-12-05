@@ -1,4 +1,4 @@
-// let curr_user_id;
+let curr_user_id;
 fetch("api/sessiondata").then(res=>res.json()).then(res2=>{
     console.log(res2.user.id);
     curr_user_id = res2.user.id;
