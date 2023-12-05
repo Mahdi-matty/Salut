@@ -26,6 +26,7 @@ router.use("/api/likes",likesRoutes);
 router.use("/api/posts",postRoutes);
 router.use("/api/",autRoutes);
 router.use("/api/follow", followRoutes);
+router.use("/api/message", messageRoutes);
 
 
 // router.get("/",(req,res)=>{
