@@ -38,9 +38,11 @@ fetch("/api/sessiondata")
 
         if (users.length > 0) {
             const ul = document.createElement("ul");
+            ul.classList.add("list-group")
 
             users.forEach((user) => {
             const li = document.createElement("li");
+            li.classList.add("list-group-item");
             li.textContent = user.username;
             li.setAttribute("data-user-id", user.id);
             li.addEventListener("click", handleUserClick);
@@ -59,13 +61,14 @@ fetch("/api/sessiondata")
         inputField.type = "text";
         inputField.placeholder = "Write your message";
         inputField.id = "messageInput";
+        inputField.classList.add("form-control")
 
         const submitButton = document.createElement("button");
         submitButton.type = "button";
         submitButton.textContent = "Send";
         submitButton.addEventListener("click", handleSendMessage);
 
-        const searchResultsInbox = document.getElementById("searchResultsInbox");
+        const searchResultsInbox = document.getElementById("inputSendInbox");
         searchResultsInbox.innerHTML = "";
         searchResultsInbox.appendChild(inputField);
         searchResultsInbox.appendChild(submitButton);
@@ -98,16 +101,28 @@ fetch("/api/sessiondata")
             alert(error.message);
         });
     }
-    function appendMessageToUI(message) {
-        const searchResultsInbox = document.getElementById("searchResultsInbox");
+    async function appendMessageToUI(message) {
+        const searchResultsInboxe = document.getElementById("searchResultsInbox");
+        try {
+          const response = await fetch(`/api/users/getUsernameById/${message.sender_id}`);
+          const data = await response.json();
+  
+          if (response.ok) {
+              const username = data.username;
     
         const messageContainer = document.createElement("div");
+        messageContainer.classList.add("container-md");
         messageContainer.innerHTML = `
-            <p>Sender ID: ${message.sender_id}</p>
+            <p> ${username} :</p>
             <h4>${message.content}</h4>
-            <p>Receiver ID: ${message.reciver_id}</p>
             <hr>
         `;
     
-        searchResultsInbox.appendChild(messageContainer);
+        searchResultsInboxe.appendChild(messageContainer);
+    }else {
+      console.error('Error fetching username:', data.error);
+        }
+    } catch (error) {
+        console.error('Error fetching username:', error.message);
+    }
     }

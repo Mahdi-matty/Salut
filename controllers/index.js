@@ -8,6 +8,7 @@ const autRoutes = require('./autRoutes');
 const followRoutes= require("./followRoutes");
 const htmlRoutes= require("./htmlRoutes");
 const bcrypt = require("bcrypt");
+const messageRoutes = require("./messageRoutes");
 
 
 // remove this
