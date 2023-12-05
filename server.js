@@ -48,7 +48,7 @@ io.on("connection", async (socket) => {
   });
 });
 
-const { User,Likes, Posts} = require('./models');
+const { User,Likes, Posts, comment} = require('./models');
 
 // you can change secret or move it to env file if you want 
 const sess = {

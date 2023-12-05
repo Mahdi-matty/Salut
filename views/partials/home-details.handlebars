@@ -1,13 +1,13 @@
 <p style="color:aliceblue"></p>
-<div class="tweets">
+<div id="tweets" data-post-id="{{post.id}}" data-user-id="{{User.id}}" class="tweets">
   <ul class="list-group">
-  
+
 <span><img src = "{{User.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{User.username}}</span>
   {{#each (processTitle title) as |wordObj|}}
         <a href="/api/posts/search?tag={{wordObj.word}}" class = "list-group-item">{{wordObj.word}}</a>
     {{/each}}
     <h6 class="idInNeed" style="display: none;">{{id}}</h6>
-  <li class="list-group-item">{{content}}</li>
+    <li class="list-group-item">{{content}}</li>
     {{#if imageSource}}
   <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
     
@@ -19,10 +19,9 @@
         {{#each comments as |comment|}}
           <li>
             <span>{{comment.user}}:</span> {{comment.text}}
-            <button type="button" class="btn btn-primary btn-sm replyBtn">Reply</button>
             <ul class="repliesList">
               {{#each comment.replies as |reply|}}
-                <li><span>{{reply.user}}:</span> {{reply.text}}</li>
+                <li><span>{{reply.user}}</span> {{reply.text}}</li>
               {{/each}}
             </ul>
             <form class="replyForm" style="display: none;">

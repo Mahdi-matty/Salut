@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {User,Posts, Likes, follow} = require("../models");
+const {User,Posts, Likes, follow, comment} = require("../models");
 const bcrypt = require("bcrypt");
 
 // router.get("/", (req, res)=>{
@@ -36,17 +36,24 @@ const bcrypt = require("bcrypt");
 // });
 
 // working version
-router.get("/",(req,res)=>{
+router.get("/",async (req,res)=>{
     try {
-        // res.render("home");
-        Posts.findAll({
-            include:[User]
-        }).then(dbPosts=>{
-            const hbsPosts = dbPosts.map(post=>post.toJSON());
-            console.log(hbsPosts);
-            res.render("home",{
-                posts:hbsPosts
-            })
+
+        const [posts, comments] = await Promise.all([
+            Posts.findAll({ include: [User] }),
+            comment.findAll({ include: [User] }),
+          ]);
+
+          const hbsPosts = posts.map(post => post.toJSON());
+          const hbsComments = comments.map(comment => comment.toJSON());
+      
+          const postsWithComments = hbsPosts.map(post => ({
+            ...post,
+            comments: hbsComments.filter(comment => comment.post_id === post.id),
+          }));
+
+          res.render("home", {
+            posts: postsWithComments,
         });
       } catch (error) {
         console.error(error);

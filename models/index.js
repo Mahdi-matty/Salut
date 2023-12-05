@@ -82,5 +82,6 @@ module.exports = {
     Posts,
     follow,
     Message,
-    Story
+    Story,
+    comment
 };

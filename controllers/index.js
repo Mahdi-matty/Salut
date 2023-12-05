@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {User,Posts, Likes, follow} = require("../models");
+const {User,Posts, Likes, follow, comment} = require("../models");
 const userRoutes = require('./userRoutes');
 const likesRoutes= require('./likesRoutes');
 const postRoutes = require('./postsRoutes');
@@ -48,7 +48,7 @@ router.use("/api/story", storyRoutes);
 //         } else {
 //             res.render("follow",{
 //                 username:req.session.user.username
-//             })  
+//             })
 //         }
 //     })
 //     router.get("/:userId/following",(req,res)=>{
@@ -57,7 +57,7 @@ router.use("/api/story", storyRoutes);
 //         } else {
 //             res.render("follow",{
 //                 username:req.session.user.username
-//             })  
+//             })
 //         }
 //     })
 
@@ -71,7 +71,7 @@ router.use("/api/story", storyRoutes);
 //         }).then(dbUser=>{
 //             const hbsUser = dbUser.toJSON()
 //             console.log('hbsUsers: ',hbsUser)
-//             res.render("profile",hbsUser)  
+//             res.render("profile",hbsUser)
 //         })
 //     }
 // })
