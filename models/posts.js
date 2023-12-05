@@ -20,7 +20,10 @@ Post.init(
       type: DataTypes.STRING,
     },
     content: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
+    },
+    imageSource : {
+      type: DataTypes.STRING,
     },
     user_id: {
       type: DataTypes.INTEGER,

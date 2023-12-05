@@ -1,4 +1,25 @@
 {{!-- {{#each user}} --}}
 
-  {{> home-details}}
+
 {{!-- {{/each}} --}}
+{{!-- 
+<p style="color:aliceblue"></p>
+<div class="profilePic">
+  <span><img src = "{{users.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{users.username}}</span>
+</div> --}}
+
+<p style="color:aliceblue"></p>
+<div class="profile">
+  <ul class="list-group">
+   
+  {{#each (processTitle title) as |wordObj|}}
+        <a href="/api/posts/search?tag={{wordObj.word}}">{{wordObj.word}}</a>
+    {{/each}}
+  <li class="list-group-item">{{content}}</li>
+  {{#if imageSource}}
+  <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
+    
+  {{/if}}
+  <br>
+</ul>
+</div>

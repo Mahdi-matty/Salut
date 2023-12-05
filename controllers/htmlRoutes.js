@@ -3,24 +3,45 @@ const router = express.Router();
 const {User,Posts, Likes, follow} = require("../models");
 const bcrypt = require("bcrypt");
 
-router.get("/", (req, res)=>{
-    Posts.findAll().then(dbPosts=>{
-        const hbsPosts = dbPosts.map(post=>post.toJSON());
-        res.render("home",{
-            posts:hbsPosts
-        });
-    }).catch(err=>{
-        res.status(500).json({msg:"oh no!",err})
-    })
+// router.get("/", (req, res)=>{
+//     Posts.findAll().then(dbPosts=>{
+//         const hbsPosts = dbPosts.map(post=>post.toJSON());
+//         res.render("home",{
+//             posts:hbsPosts
+//         });
+//     }).catch(err=>{
+//         res.status(500).json({msg:"oh no!",err})
+//     })
 
-});
+// });
 
+// router.get("/",(req,res)=>{
+//     try {
+//         // res.render("home");
+//         User.findAll({
+//             include:[Posts, Likes]
+//         }).then(dbPosts=>{
+            
+//             const hbsPosts = dbPosts.map(post=>post.toJSON());
+//             console.log("################################");
+//             console.log(dbPosts);
+//             res.render("home",{
+//                 users:hbsPosts
+//             })
+//         })
+//       } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Internal Server Error');
+//       }
+// });
 
-
+// working version
 router.get("/",(req,res)=>{
     try {
         // res.render("home");
-        Posts.findAll().then(dbPosts=>{
+        Posts.findAll({
+            include:[User]
+        }).then(dbPosts=>{
             const hbsPosts = dbPosts.map(post=>post.toJSON());
             console.log(hbsPosts);
             res.render("home",{
@@ -111,6 +132,10 @@ router.get("/profile",(req,res)=>{
             res.status(500).json({msg:"oh no!",err})
         })
     }
+});
+
+router.get("/:userId/inbox",(req,res)=>{
+    res.render("inbox")
 });
 
 
