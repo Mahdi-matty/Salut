@@ -8,9 +8,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-        <a class="nav-link" href="#">Followers</a>
-        <a class="nav-link" href="#">Following</a>
+        <a class=" active" aria-current="page" href="/profile">Profile</a>
+        <a class="" href="#">Followers</a>
+        <a class="" href="#">Following</a>
       </div>
     </div>
   </div>
@@ -21,8 +21,19 @@
 
   {{> home-details}}
 {{/each}}
-
-    <div class="collapse" id="collapseExample">
+<style>
+  a {
+    color: #FFE5C1; /* Default color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+     margin-right: 10px;
+}
+/* Style for when the link is being hovered */
+a:hover {
+    color: #943ce7; /* Custom color on hover */
+}
+</style>
+    {{!-- <div class="collapse" id="collapseExample">
     <div class="card card-body">
         <div>
             <ul class="ugad"></ul>
@@ -33,7 +44,7 @@
                 <button type="submit" id="usent" title="Send">Send</button>
         </form>
     </div>
-    </div>
+    </div> --}}
 
 
 

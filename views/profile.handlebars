@@ -3,7 +3,7 @@
 <div class="p-2 bd-highlight">
 <h2 class="userNome" style="color:white">{{users.username}}</h2>
 
-  <div class="input-group mb-3">
+  <div class="input-group mb-3 form-control">
     <button class="btn btn-outline-secondary usersearchBtn" type="button" id="button-addon1">Search</button>
     <input type="text" class="form-control" id="searchData" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
   </div>
@@ -15,7 +15,7 @@
 
 
 <div class="p2">
-  <button id="upload_widget" class="cloudinary-button">Update Profile Picture
+  <button id="upload_widget" class="btn-col cloudinary-button">Update Profile Picture
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
 
 <script type="text/javascript">
@@ -26,23 +26,23 @@
 
 
 <div class="user-btns">
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-col">
         Notifications <span class="badge bg-secondary">4</span>
       </button>
-  <button type="button" class="btn btn-primary position-relative">
+  <button type="button" class="btn btn-col position-relative">
     <a href="http://localhost:3000/:userId/followers" style="color:white">Followers</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
   </button>
-  <button type="button" class="btn btn-primary position-relative">
+  <button type="button" class="btn btn-col position-relative">
     <a href="http://localhost:3000/:userId/following" style="color:white">Following</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
       <span class="visually-hidden">New alerts</span>
     </span>
   </button>
 
-  <button type="button" class="btn btn-primary position-relative">
+  <button type="button" class="btn btn-col position-relative">
     <a href="http://localhost:3000/:userId/inbox" style="color:white">Inbox</a>
     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
       99+
@@ -59,6 +59,16 @@
       gap: 15px;
       margin-bottom: 10px;
     }
+    .form-control {
+      width: 50%;
+    }
+    .usersearchBtn:hover {
+      background-color: #57BEE6;
+    }
+    .btn-col {
+      background-color: #57BEE6;
+      color: aliceblue;
+    }
   </style>
 </div>
 
@@ -68,13 +78,13 @@
   Title :  <input type="text" class="form-control titleSearchProf" id="title basic-url" aria-describedby="basic-addon3">
   Content : <textarea class="form-control" id = "content" aria-label="With textarea"></textarea>
 
-  <button id="upload_post" class="cloudinary-button">Upload an image
+  <button id="upload_post" class="btn-col cloudinary-button">Upload an image
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
 
 <script type="text/javascript">
 
 </script> 
-  <button id ="submitBtn" class="btn btn-primary">
+  <button id ="submitBtn" class="btn btn-col">
     Post
   </button>
 </div>
@@ -85,7 +95,7 @@
 
 <div class="p-2 bd-highlight">
     <p>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <a class="btn btn-col" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Lets Chat
     </a>
     </p>
