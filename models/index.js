@@ -1,13 +1,35 @@
 const Likes = require('./likes');
 const User = require('./User');
+const Follow= require("./follow");
 const Posts = require('./posts');
-const follow= require("./follow");
+const followedBy = require("./followedBy");
+const followsTo = require("./followsTo");
+
 
 Likes.belongsTo(Posts, {
     foreignKey:'post_id',
 });
 Likes.belongsTo(User,{
     foreignKey:'user_id',
+});
+
+
+
+User.belongsToMany(Follow, { through: followedBy, uniqueKey: `followers`});
+Follow.belongsToMany(User, { through: followsTo, uniqueKey: `followings`});
+
+followedBy.belongsTo(User,{
+    foreignKey:'UserId'
+})
+User.hasMany(followedBy,{
+    foreignKey:'UserId'
+});
+
+followsTo.belongsTo(User,{
+    foreignKey:'UserId'
+})
+User.hasMany(followsTo,{
+    foreignKey:'UserId'
 });
 
 Posts.hasMany(Likes, {
@@ -23,19 +45,23 @@ Posts.belongsTo(User, {
 User.hasMany(Posts,{
     foreignKey:'user_id',
 });
-follow.belongsTo(User, {
+
+Follow.hasOne(User, {
     foreignKey: "following_user_id",
-    as: "followers"
-});
-follow.belongsTo(User, {
+    as: "followers",
     foreignKey: "followed_user_id",
     as: "following"
 });
 
+
+User.belongsTo(Follow);
+// Follow.belongsTo();
+
 User.belongsToMany(User, {
     through: "follow",
     as: "followers",
-    foreignKey: "followed_user_id"
+    foreignKey: "followed_user_id",
+    as:"followings"
 });
 User.belongsToMany(User,  {
     through: 'follow',
@@ -47,5 +73,7 @@ module.exports = {
     Likes,
     User,
     Posts,
-    follow
+    Follow,
+    followedBy,
+    followsTo
 };

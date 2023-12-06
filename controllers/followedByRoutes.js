@@ -6,9 +6,6 @@ const {User,Likes, Posts, Follow, followedBy, followsTo} = require('../models');
 
 
 const isAuthenticated = (req, res, next) => {
-  // console.log("=================================================================");
-  // console.log("req User : ");
-  // console.log(req.session.user.id);
     if (!req.session.user) {
       res.status(403).json({ msg: "Login first to perform this action!" });
     } else {
@@ -16,26 +13,32 @@ const isAuthenticated = (req, res, next) => {
     }
   };
 
-  
+//get all the followers or followedBy
+
 router.get("/", isAuthenticated, (req,res)=>{
-    Follow.findAll().then(dbUsers=>{
+    followedBy.findAll().then(dbUsers=>{
         res.json(dbUsers)
     }).catch(err=>{
         res.status(500).json({msg:"oh no!",err})
     })
 });
 
+// not sure if needed
 router.get("/logout",(req,res)=>{
     req.session.destroy();
     res.send("logged out!")
 });
 
+//finds all the follower of current user
 router.get("/:id",(req,res)=>{
-    Follow.findByPk(req.params.id,{
+    followedBy.findAll({
+        where:{
+            userId:req.session.user.id,
+        },
         include:[User]
     }).then(dbfollow=>{
         if(!dbfollow){
-            res.status(404).json({msg:"no such follow!"})
+            res.status(404).json({msg:"no such follower!"})
         } else{
             res.json(dbfollow)
         }
@@ -44,11 +47,13 @@ router.get("/:id",(req,res)=>{
     })
 });
 
+//create a follower
 router.post('/', isAuthenticated, async (req, res) => {
-    Follow.create(
+    followedBy.create(
         {
-            following_user_id: req.body.following_user_id,
-            followed_user_id: req.body.followed_user_id
+            UserId: req.body.FollowId, //id of the person following
+            FollowId: req.session.user.id,  //id of current user
+            // doYouFollow: true,
         }
     ).then((newfollow) => {
         res.json(newfollow);
@@ -58,21 +63,21 @@ router.post('/', isAuthenticated, async (req, res) => {
       });
   });
 
-
-  router.get(`/:userId/followers/showFollower`, isAuthenticated, async (req,res)=>{
+// for rendering not sure if need it
+  router.get(`/:userId/followedBy/display`, isAuthenticated, async (req,res)=>{
     try{
       const userId = req.params.userId;
       console.log(`I am handlebar ${req.params.userId}` );
       // console.log(res.json());
-      const followers = await Follow.findAll({
+      const followers = await followedBy.findAll({
         where: { followed_user_id: userId },
         include: [{ model: User, as: 'followers' }], 
       }).then(dbFollower=>{
         console.log(`----------------------------------------------------++----------------`);
         console.log(dbFollower);
-        res.render("followers",{
-           followers:dbFollower
-        });
+        // res.render("followers",{
+        //    followers:dbFollower
+        // });
         // res.json(dbFollower);
       });
     }
@@ -85,11 +90,11 @@ router.post('/', isAuthenticated, async (req, res) => {
     // });
   });
   
-  router.get('/:userId/followers', isAuthenticated, async (req, res) => {
+  router.get('/:userId/followedBy', isAuthenticated, async (req, res) => {
     try {
       const userId = req.params.userId;
       // console.log(`-------------------- ${userId}`);
-      const followers = await Follow.findAll({
+      const followers = await follow.findAll({
         where: { followed_user_id: userId },
         include: [{ model: User, as: 'followers' }], 
       }).then(dbFollower=>{
@@ -114,26 +119,14 @@ router.post('/', isAuthenticated, async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   });
-  router.get('/:userId/following', isAuthenticated, async (req, res) => {
-    try {
-      const userId = req.params.userId;
-      const followings = await Follow.findAll({
-        where: { following_user_id: userId },
-        include: [{ model: User, as: 'following' }], 
-      });
-  
-      res.json(followings);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal Server Error');
-    }
-  });
 
+//for unfollow (not using it yet)
 router.put("/:id", isAuthenticated, (req, res) => {
-    follow.update(
+    followedBy.update(
       {
         following_user_id: req.body.following_user_id,
-        followed_user_id: req.body.followed_user_id
+        followed_user_id: res.session.user.id,
+        // doYouFollow: false,
       },
       {
         where: {
@@ -154,9 +147,9 @@ router.put("/:id", isAuthenticated, (req, res) => {
     });
 
 
-// delete a follow
+// delete a follower
 router.delete("/:id", isAuthenticated, (req, res) => {
-  Follow.destroy({
+  followedBy.destroy({
     where: {
       id: req.params.id,
     },

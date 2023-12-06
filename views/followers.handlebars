@@ -1,11 +1,12 @@
+{{> follower-details}}
+
+{{!-- {{> follower-details}}
 
 <div class="row">
   <div class="col">
 {{!-- <p>Do I work?</p> --}}
-        <h3>Followers</h3>
-    {{!-- <div class="collapse multi-collapse" id="multiCollapseExample1"> --}}
-    <div>
-      <div class="card card-body" id="followers-container">
+    <h3 style="text-align:center">Followers</h3>
+    <div class="card card-body followColor w-50" id="followers-container">
         {{#each followers as |follower|}}
         <ul class="list-group">
             <li class="list-group-item">
@@ -16,15 +17,12 @@
             </li>
         </ul>
         {{/each}}
-      </div>
     </div>
   </div>
-  <div class="col">
-    {{!-- <div class="collapse multi-collapse" id="multiCollapseExample2"> --}}
-    <div>
 
-        <h3>Following</h3>
-      <div class="card card-body" id="following-container">
+  <div class="col align-self-center mr-3">
+    <h3 style="text-align:center">Following</h3>
+      <div class="card card-body followColor w-50" id="following-container">
          {{#each followings as |following|}}
         <ul class="list-group">
             <li class="list-group-item">
@@ -36,8 +34,8 @@
         </ul>
         {{/each}}
       </div>
-    </div>
   </div>
 </div>
 
-<script src="/js/follow.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/follow.js"></script> --}}

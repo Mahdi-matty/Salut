@@ -1,16 +1,17 @@
 // getting the current user data
 // let curr_user_id;
+let currUser_1;
 let postUrl;
 fetch("api/sessiondata").then(res=>res.json()).then(res2=>{
     console.log(res2.user.id);
     curr_user_id = res2.user.id;
     fetch(`api/users/${curr_user_id}`).then(res=>res.json()).then(res2=>{
-        currUser = res2;
+        currUser_1 = res2;
 
-        console.log("currUser :: ");
-        console.log(currUser.Posts[0]);
-        // if(currUser.profilePic===null){
-        //     currUser.profilePic = "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg";
+        console.log("currUser_1 :: ");
+        console.log(currUser_1.Posts[0]);
+        // if(currUser_1.profilePic===null){
+        //     currUser_1.profilePic = "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg";
         // }
     });
 });
@@ -29,10 +30,10 @@ var myWidget_1 = cloudinary.createUploadWidget({
             console.log('Done! Here is the image info: ', result.info);
             postUrl = result.info.url;
         }
-        // console.log(currUser);
+        // console.log(currUser_1);
         fetch(`api/users/${curr_user_id}`,{
             // method:"PUT",
-            // body:JSON.stringify(currUser),
+            // body:JSON.stringify(currUser_1),
             // headers:{
             //     "Content-Type":"application/json"
             // }
@@ -46,8 +47,8 @@ var myWidget_1 = cloudinary.createUploadWidget({
                     // }
         });
                 
-                //  currUser.profilePic = profilePicUrl;
-        //  profilePic.setAttribute('src',currUser.profilePic);
+                //  currUser_1.profilePic = profilePicUrl;
+        //  profilePic.setAttribute('src',currUser_1.profilePic);
     }
 )
 

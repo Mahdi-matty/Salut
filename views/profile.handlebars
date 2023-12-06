@@ -16,6 +16,7 @@
     </svg> --}}
     <img class="profilePic" width="160" height="160"/>
   </button>
+
   {{!-- <button type="button" class="btn btn-primary" id="followBtn">Follow</button> --}}
 </div>
 
@@ -45,6 +46,47 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 </button>
 </div>
 
+<div>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#followerButton" aria-expanded="false" aria-controls="followerButton">
+    Followers new
+  </button>
+
+  <div style="min-height: 120px;">
+    <div class="collapse collapse-horizontal" id="followerButton">
+      <div class="card card-body" style="width: 300px;">
+        <div class="row followColor">
+          <h3 style="text-align:center">Followers</h3>
+          <div class="col">
+            <div id="followers-container">
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+
+
+
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#followingButton" aria-expanded="false" aria-controls="followingButton">
+    Following new
+  </button>
+
+  <div style="min-height: 120px;">
+    <div class="collapse collapse-horizontal" id="followingButton">
+      <div class="card card-body" style="width: 300px;">
+        <div class="row followColor">
+          <h3 style="text-align:center">Following</h3>
+          <div class="col">
+            <div id="following-container">
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
+
+
 
 <div class="user-btns">
       <button type="button" class="btn btn-primary">
@@ -56,6 +98,10 @@ document.getElementById("upload_widget").addEventListener("click", function(){
       <span class="visually-hidden">New alerts</span>
     </span>
   </button>
+
+
+
+
   <button type="button" class="btn btn-primary position-relative">
     <a href="/:userId/following" style="color:white">Following</a>
     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
@@ -201,6 +247,7 @@ document.querySelector("#upload_post").addEventListener("click", function(){
 
 </div>
 
+<script src="/js/follow.js"></script>
 <script src="/js/folowbtn.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/delete.js"></script>
@@ -210,6 +257,9 @@ document.querySelector("#upload_post").addEventListener("click", function(){
 <script src="/js/profile.js"></script>
 <script src="/js/chat.js"></script>
 <script src="/js/uploadPost.js"></script>
+<script src="/js/followers.js"></script>
+<script src="/js/followings.js"></script>
+
 
 
 

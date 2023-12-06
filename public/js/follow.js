@@ -17,23 +17,31 @@ const getUserId = async () => {
 
 getUserId().then((userId) => {
   if (userId) {
-    fetch(`/api/follow/${userId}/followers/showFollower`);
+    // fetch(`/api/follow/${userId}/followers/showFollower`);
     
     fetch(`/api/follow/${userId}/followers`)
     .then(response =>response.json())
     .then(data => {
-      console.log(" FRONT END !!");
-      console.log(data[0].followers);
       follower = data[0].followers;
+      console.log("Listen !!")
+      console.log(follower);
+      
       const followersContainer = document.querySelector("#followers-container");
       const followerList = document.createElement(`ul`);
-      data.forEach((follower) => {
-        console.log("Listen !!")
-        console.log(follower.followers);
+      const testEl = document.createElement('p');
+      testEl.textContent = "Do you work inside front end JS?";
+      // followersContainer.append(testEl);
+
+      for (let i = 0; i < data.length; i++) {
+        // console.log(data[i]);
+        
+        console.log(" FRONT END !!");
+        console.log(data[i]);
         const listItem = document.createElement('li');
 
         //start from here
-        listItem.textContent = follower.followers.username;
+        
+        listItem.textContent = data[i].followers.username;
 
 //not sure yet
 
@@ -45,7 +53,28 @@ getUserId().then((userId) => {
         // }
         
         followerList.appendChild(listItem);
-        console.log(`I am sending a User !! ${userId}`)
+        // console.log(`I am sending a User !! ${userId}`)
+      }
+      data.forEach((something) => {
+//         console.log(" FRONT END !!");
+//         console.log(data[something]);
+//         const listItem = document.createElement('li');
+
+//         //start from here
+        
+//         listItem.textContent = follower.followers.username;
+
+// //not sure yet
+
+//         // if (follower.Follow && follower.Follow.id) {
+//         //   const badge = document.createElement('span');
+//         //   badge.textContent = 'Following';
+//         //   badge.classList.add('badge', 'bg-primary');
+//         //   listItem.appendChild(badge);
+//         // }
+        
+//         followerList.appendChild(listItem);
+//         console.log(`I am sending a User !! ${userId}`)
       });
       followersContainer.append(followerList);
     })

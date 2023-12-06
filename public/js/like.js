@@ -1,7 +1,7 @@
 const liksBtns = document.querySelector(".likeBtn");
 const userNomLike = document.querySelector(".userNomeSec");
 
-const getUserId = async () => {
+const getUserId_2 = async () => {
   try {
     const response = await fetch("/api/sessiondata");
     const data = await response.json();
@@ -56,7 +56,7 @@ liksBtns.addEventListener("click", async function(event) {
   const userIdForLike = await getUserIDByUsername(userNomLike.textContent);
 
   const createLikeObj = async () => {
-    const userId = await getUserId();
+    const userId = await getUserId_2();
 
     if (userId !== null) {
       const likeObj = {
