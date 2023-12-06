@@ -10,17 +10,40 @@ const exphbs = require('express-handlebars');
 const http = require('http').createServer(app);
 const io=require('socket.io')(http);
 const PORT = process.env.PORT || 3000;
-
+const Room = require("./room");
 
 
 app.use(express.static('public'));
 
 // this like is also for socket.io setups 
-io.on("connection", function(socket){
-    io.emit("user connected");
-    socket.on("message", function(msg){
-        io.emit("message", msg);
-    });
+const room = new Room();
+
+io.on("connection", async (socket) => {
+  const roomID = await room.joinRoom();
+  socket.join(roomID);
+
+  // Emit the list of usernames to the client when they join
+  io.to(socket.id).emit("user-list", room.getUsernames(roomID));
+
+  // Emit the list of usernames to all clients in the room
+  io.to(roomID).emit("user-list", room.getUsernames(roomID));
+  console.log("Emitted User List:", room.getUsernames(roomID));
+
+  const username = "Guest" + Math.floor(Math.random() * 1000);
+  room.addUserToRoom(roomID, username);
+
+  socket.on("send-message", ({ text, sender }) => {
+    socket.to(roomID).emit("receive-message", { text, sender });
+  });
+
+  socket.on("disconnect", () => {
+    const userRoomID = room.joinRoom(socket.id);
+    if (userRoomID) {
+      room.leaveRoom(userRoomID);
+      room.removeUserFromRoom(userRoomID, username);
+      io.to(userRoomID).emit("user-list", room.getUsernames(userRoomID));
+    }
+  });
 });
 
 const { User,Likes, Posts} = require('./models');

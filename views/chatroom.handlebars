@@ -1,0 +1,20 @@
+  <div class="container-lg">
+        <div id="messagesChatRoom">
+        </div>
+        <div class="container-md" id="userChatListContainer"></div>
+        <div>
+         <p id="userNameChatSender" style="display: none;">{{username}}</p>
+        </div>
+        <div class="container-fluid">
+           <div class="container-md position-absolute bottom-0 start-50 translate-middle-x">
+              <input type="text" name="inputChatField" placeholder="Write your message!" class="inputChatField form-control ">
+              <div class="btn-group">
+                 <button type="button" class="sendChatBtn btn btn-primary">
+                    <span class="font-bold">Send</span>
+                 </button>
+              </div>
+           </div>
+        </div>
+     </div>
+     <script src="/socket.io/socket.io.js"></script>
+     <script src="/js/chatroom.js"></script>
