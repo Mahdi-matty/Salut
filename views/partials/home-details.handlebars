@@ -12,6 +12,36 @@
   <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
     
   {{/if}}
+
+      <li class="list-group-item">
+      <h6>Comments:</h6>
+      <ul class="commentsList">
+        {{#each comments as |comment|}}
+          <li>
+            <span>{{comment.user}}:</span> {{comment.text}}
+            <button type="button" class="btn btn-primary btn-sm replyBtn">Reply</button>
+            <ul class="repliesList">
+              {{#each comment.replies as |reply|}}
+                <li><span>{{reply.user}}:</span> {{reply.text}}</li>
+              {{/each}}
+            </ul>
+            <form class="replyForm" style="display: none;">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Add a reply..." />
+                <button type="submit" class="btn btn-primary btn-sm">Reply</button>
+              </div>
+            </form>
+          </li>
+        {{/each}}
+      </ul>
+
+      <form class="commentForm">
+        <div class="form-group">
+          <input type="text" class="form-control" id = "commentId" placeholder="Add a comment..." />
+          <button type="submit" class="btn btn-primary btn-sm">Comment</button>
+        </div>
+      </form>
+    </li>
   <button type="button" class="btn btn-primary btn-sm likeBtn">like</button><p class="likeCount">0</p>
   {{!-- <button type="button" class="btn btn-primary btn-sm deleteBtn">Delete</button> --}}
   <br>

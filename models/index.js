@@ -2,7 +2,23 @@ const Likes = require('./likes');
 const User = require('./User');
 const Posts = require('./posts');
 const follow= require("./follow");
+const comment = require("./comments");
 const Message = require("./message");
+
+comment.belongsTo(Posts, {
+    foreignKey:`post_id`,
+})
+
+Posts.hasMany(comment,{
+    foreignKey:`post_id`,
+})
+
+User.hasMany(comment,{
+    foreignKey:`user_id`,
+})
+comment.belongsTo(User,{
+    foreignKey:`user_id`,
+})
 
 Likes.belongsTo(Posts, {
     foreignKey:'post_id',
