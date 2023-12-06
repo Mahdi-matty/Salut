@@ -133,7 +133,15 @@ router.get("/profile",(req,res)=>{
         })
     }
 });
-
+router.get("/:userId/chatroom",(req,res)=>{    
+    if(!req.session.user){
+        res.redirect("/login")
+    } else {
+        res.render("chatroom",{
+            username:req.session.user.username
+        })  
+    }
+})
 router.get("/:userId/inbox",(req,res)=>{    
     if(!req.session.user){
         res.redirect("/login")
