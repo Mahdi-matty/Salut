@@ -1,15 +1,7 @@
-{{!-- {{#each user}} --}}
 
-
-{{!-- {{/each}} --}}
-{{!-- 
-<p style="color:aliceblue"></p>
-<div class="profilePic">
-  <span><img src = "{{users.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{users.username}}</span>
-</div> --}}
 
 <p style="color:aliceblue"></p>
-<div class="profile">
+<div class="profile" data-post-id="{{id}}">
   <ul class="list-group">
    
   {{#each (processTitle title) as |wordObj|}}
@@ -22,4 +14,29 @@
   {{/if}}
   <br>
 </ul>
+<button class="like-btn likeBtn" id="likeBtn">Like</button>
+<button class="delete-btn deleteBtn" id="deleteBtn">Delete</button>
 </div>
+
+<style>
+  .like-btn {
+    background-color: #57BEE6;
+    color: #222121;
+    height: 36px;
+    width: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  .delete-btn {
+    background-color: #57BEE6;
+    color: #222121;
+    height: 36px;
+    width: 60px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+</style>
