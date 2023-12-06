@@ -134,9 +134,14 @@ router.get("/profile",(req,res)=>{
     }
 });
 
-router.get("/:userId/inbox",(req,res)=>{
-    res.render("inbox")
-});
-
+router.get("/:userId/inbox",(req,res)=>{    
+    if(!req.session.user){
+        res.redirect("/login")
+    } else {
+        res.render("inbox",{
+            username:req.session.user.username
+        })  
+    }
+})
 
 module.exports = router;

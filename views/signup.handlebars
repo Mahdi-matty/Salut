@@ -1,4 +1,11 @@
-<section class="d-flex justify-content-center align-items-center vh-100">
+{{!-- <section class="d-flex justify-content-center align-items-center vh-100 tweets"></section> --}}
+<section class="tweets">
+<div class="welcome">
+    <h1>Welcome to Salut</h3>
+    <h3>The better verstion of twitter</h3>
+    <p>Please Sign-up and create an account today or 
+    login <a href="http://localhost:3000/login">here</a> if you already have an existing account</p>
+  </div>
 
 <form>
   <div class="mb-3">
@@ -6,7 +13,35 @@
     <label for="exampleInputEmail1" class="form-label custom-text-color">Email address</label>
     <style>
   .custom-text-color {
-    color: #ff5733; /* Replace with your desired color code */
+    color: #fcfcfc; /* Replace with your desired color code */
+  }
+  .form-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 80px;
+    }
+    .welcome {
+      
+      color: #fcfcfc;
+    }
+    .receive-text {
+    color: #3D424A; 
+  }
+  .custom-btn-color {
+    background-color: #f06445; 
+    color: #ffffff; 
+    
+  }
+  .tweets {
+    background-color: #57BEE6;
+    height: 800px;
+    width: 800px;
+    margin-top: 30px;
+    margin-left: 300px;
+    border-radius: 10px;
+    padding: 40px;
+    
   }
 </style>
     <input type="email" class="form-control emailNeeded" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
@@ -42,3 +77,26 @@
 </form>
 </section>
 <script src="/js/signup.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,4 @@
 <section class="d-flex bd-highlight flex-column mb-3">
-  {{!-- <section class="d-flex justify-content-center align-items-center vh-100"></section> --}}
-
-
 
 <div class="p-2 bd-highlight">
 <h2 class="userNome" style="color:white">{{users.username}}</h2>
@@ -12,13 +9,8 @@
   </div>
 
   <button id="followBtn">
-    {{!-- <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" fill="blue" class="bi bi-person-fill-add" viewBox="0 0 16 16">
-      <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-      <path d="M2 13c0 1 1 1 1 1h5.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.544-3.393C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4"/>
-    </svg> --}}
     <img class="profilePic" width="160" height="160"/>
   </button>
-  {{!-- <button type="button" class="btn btn-primary" id="followBtn">Follow</button> --}}
 </div>
 
 
@@ -27,22 +19,7 @@
   <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
 
 <script type="text/javascript">
-/*
 
-var myWidget = cloudinary.createUploadWidget({
-  cloudName: 'drfd6uhgz', 
-  uploadPreset: 'uaaczmxe'}, (error, result) => { 
-    if (!error && result && result.event === "success") { 
-      console.log('Done! Here is the image info: ', result.info); 
-    }
-  }
-)
-
-document.getElementById("upload_widget").addEventListener("click", function(){
-    myWidget.open();
-  }, false);
-
-  */
 </script> 
 </button>
 </div>
@@ -88,8 +65,6 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 
 <div class="p2">
 
-
-
   Title :  <input type="text" class="form-control titleSearchProf" id="title basic-url" aria-describedby="basic-addon3">
   Content : <textarea class="form-control" id = "content" aria-label="With textarea"></textarea>
 
@@ -98,21 +73,6 @@ document.getElementById("upload_widget").addEventListener("click", function(){
 
 <script type="text/javascript">
 
-/*
-var myWidget = cloudinary.createUploadWidget({
-  cloudName: 'drfd6uhgz', 
-  uploadPreset: 'uaaczmxe'}, (error, result) => { 
-    if (!error && result && result.event === "success") { 
-      console.log('Done! Here is the image info: ', result.info); 
-    }
-  }
-)
-
-document.querySelector("#upload_post").addEventListener("click", function(){
-    myWidget.open();
-  }, false);
-
-  */
 </script> 
   <button id ="submitBtn" class="btn btn-primary">
     Post
@@ -123,14 +83,8 @@ document.querySelector("#upload_post").addEventListener("click", function(){
 <br>
 
 
-
-
-
-
 <div class="p-2 bd-highlight">
-{{!-- <section class="d-flex justify-content-center align-items-center vh-100">--}}
     <p>
-      {{!-- <button type="button" class="btn btn-primary" id="followBtn">Follow</button> --}}
     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Lets Chat
     </a>
@@ -151,40 +105,10 @@ document.querySelector("#upload_post").addEventListener("click", function(){
 
 </div>
 
-{{!-- <div class="p2 bd-highlight">
-      <button type="button" class="btn btn-primary">
-        Notifications <span class="badge bg-secondary">4</span>
-      </button>
-  <button type="button" class="btn btn-primary position-relative">Followers
-    <a href="http://localhost:3000/followers"></a>
-    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-      <span class="visually-hidden">New alerts</span>
-    </span>
-  </button>
-  <button type="button" class="btn btn-primary position-relative">Following
-    <a href="http://localhost:3000/following"></a>
-    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-      <span class="visually-hidden">New alerts</span>
-    </span>
-  </button>
-
-  <button type="button" class="btn btn-primary position-relative">Inbox
-    <a href="http://localhost:3000/inbox"></a>
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-      99+
-      <span class="visually-hidden">unread messages</span>
-    </span>
-  </button>
-</button>
-
-
-</div> --}}
 
 <br>
 
 <div class="p2 bd-highlight">
-{{!-- 
-{{> profile-details}} --}}
 
 
 <span><img src = "{{users.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{users.username}}</span>
@@ -194,12 +118,6 @@ document.querySelector("#upload_post").addEventListener("click", function(){
   
 {{/each}}
 
-
-
-  {{!-- {{#each user.Posts as |post|}}
-    {{> home-details}}
-  {{/each}}
- --}}
 
 </div>
 

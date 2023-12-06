@@ -71,7 +71,24 @@ router.get("/findUser/:username",(req,res)=>{
         res.status(500).json({msg:"oh no!",err})
     })
 });
-
+router.get('/getUsernameById/:id', async (req, res) => {
+    try {
+      const id = req.params.id;
+      const user = await User.findOne({
+        where: { id: id },
+        attributes: ['username'],
+      });
+  
+      if (user) {
+        res.json({ username: user.username });
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 
 //create
 router.post("/",(req,res)=>{
