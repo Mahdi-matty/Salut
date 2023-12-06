@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const isMyFollower = require("../middleware/isMyFollower");
 const {User,Likes, Posts, follow} = require('../models');
 
 
@@ -53,15 +54,58 @@ router.post('/', isAuthenticated, async (req, res) => {
         res.status(500).json({ msg: "oh no!",err});
       });
   });
-  router.get('/:userId/followers', isAuthenticated, async (req, res) => {
-    try {
+
+
+  router.get(`/:userId/followers/showFollower`, isAuthenticated, async (req,res)=>{
+    try{
       const userId = req.params.userId;
+      console.log(`I am handlebar ${req.params.userId}` );
+      // console.log(res.json());
       const followers = await follow.findAll({
         where: { followed_user_id: userId },
         include: [{ model: User, as: 'followers' }], 
+      }).then(dbFollower=>{
+        console.log(`----------------------------------------------------++----------------`);
+        console.log(dbFollower);
+        res.render("followers",{
+           followers:dbFollower
+        });
+        // res.json(dbFollower);
       });
+    }
+    catch (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    }
+    // res.render("followers",{
+    //   // followers:
+    // });
+  });
   
-      res.json(followers)
+  router.get('/:userId/followers', isAuthenticated, async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      // console.log(`-------------------- ${userId}`);
+      const followers = await follow.findAll({
+        where: { followed_user_id: userId },
+        include: [{ model: User, as: 'followers' }], 
+      }).then(dbFollower=>{
+        // console.log(`----------------------------------------------------++----------------`);
+        // console.log(dbFollower[0].followers.dataValues);
+        // res.render("followers",{
+        //   followers:dbFollower[0].followers.dataValues
+        // });
+        res.json(dbFollower);
+      });
+      // console.log(`----------------------------------------------------++----------------`);
+      // console.log(followers[0].following_user_id);
+      // isMyFollower();
+      //find the user using the routes
+      // router.get(`/api/users/2` ,(req,res)=>{
+      //   console.log("__________WHy don't you work??__________");
+      //   console.log(res);
+      // });
+      // res.render("followers");
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal Server Error');
