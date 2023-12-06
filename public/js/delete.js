@@ -1,29 +1,33 @@
-const deletBtns = document.querySelector(".deleteBtn");
-//  const classINeed = document.querySelector(".classINeed");
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all delete buttons
+    const deleteBtns = document.querySelectorAll(".deleteBtn");
 
- deletBtns.addEventListener("click", async function(event) {
-    const deleteBtn = event.target.closest(".deleteBtn");
-    if (!deleteBtn) {
-        return; 
-    }
-    const listItem = this.closest('ul');
-    console.log('Found list item:', listItem);
+    // Add a click event listener to each delete button
+    deleteBtns.forEach(deleteBtn => {
+        deleteBtn.addEventListener("click", async function(event) {
+            // Find the closest ancestor with class 'profile'
+            const profileElement = this.closest(".profile");
 
-    if (!listItem) {
-        console.error('Error: Could not find list item');
-        return;
-    }
-    const idInNeed = document.querySelector(".idInNeed").textContent;
-    try {
-        const response = await fetch(`/api/posts/${idInNeed}`, {
-            method: 'DELETE',
-            
+            if (profileElement) {
+                try {
+                    // Extract post ID from the profileElement dataset or other method based on your implementation
+                    const postId = profileElement.dataset.postId;
+
+                    // Send a DELETE request to the server to delete the post
+                    const response = await fetch(`/api/posts/${postId}`, {
+                        method: 'DELETE',
+                    });
+
+                    if (response.ok) {
+                        // Remove the profileElement from the DOM if the deletion is successful
+                        profileElement.remove();
+                    } else {
+                        console.log("Error deleting post");
+                    }
+                } catch (error) {
+                    console.error('Error during delete operation', error);
+                }
+            }
         });
-        if (response.ok){
-            listItem.remove();
-        }else {
-            console.log("error")
-        }
-} catch (error) {
-    console.error('Error during delete operation', error);
-}})
+    });
+});
