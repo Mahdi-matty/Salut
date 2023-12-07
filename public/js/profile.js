@@ -8,11 +8,11 @@ fetch("api/sessiondata").then(res=>res.json()).then(res2=>{
     // console.log(curr_user_id);
     fetch(`api/users/${curr_user_id}`).then(res=>res.json()).then(res2=>{
         currUser = res2;
-        // console.log("currUser :: ");
         // console.log(currUser.Posts[0]);
         if(currUser.profilePic===null){
             currUser.profilePic = "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg";
         }
+        console.log(`currUser :: ${currUser.profilePic}`);
     });
 });
 
@@ -41,10 +41,10 @@ var myWidget = cloudinary.createUploadWidget({
                 // }else{
                     //     alert("Something went wrong, Please try again !");
                     // }
+                    profilePic.setAttribute('src',currUser.profilePic);
         });
                 
                 //  currUser.profilePic = profilePicUrl;
-         profilePic.setAttribute('src',currUser.profilePic);
     }
 )
                     

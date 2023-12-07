@@ -17,7 +17,7 @@ document.querySelector(".usersearchBtn").addEventListener("click", async functio
         const matchingUser = users.find(user => user.username === searchData);
 
         if (matchingUser) {
-            window.location.href = `/api/users/findUser/${encodeURIComponent(matchingUser.username)}`;
+            window.location.href = `/api/users/findUser/${encodeURIComponent(matchingUser.id)}`;
         } else {
             console.log("User not found");
         }

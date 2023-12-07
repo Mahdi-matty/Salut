@@ -52,7 +52,7 @@ const { User,Likes, Posts} = require('./models');
 
 // you can change secret or move it to env file if you want 
 const sess = {
-    secret: 'Super secret secret',
+    secret: process.env.SESSION_SECRET,
     cookie: {
         maxAge:1000*60*60*2
     },

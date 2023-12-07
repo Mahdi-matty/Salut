@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {User,Posts, Likes, follow} = require("../models");
+const {User,Posts, Likes, Follow, followedBy, followsTo} = require("../models");
 const bcrypt = require("bcrypt");
 
 // router.get("/", (req, res)=>{
@@ -121,7 +121,7 @@ router.get("/profile",(req,res)=>{
         res.redirect("/login")
     } else {
         User.findByPk(req.session.user.id,{
-            include:[Posts, Likes]
+            include:[Follow, Posts, Likes, followedBy, followsTo]
         }).then(dbUser=>{
             const hbsUser = dbUser.toJSON();
             console.log('my hbsUsers: ',hbsUser)

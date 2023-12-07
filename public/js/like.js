@@ -1,6 +1,55 @@
 // const liksBtns = document.querySelector(".likeBtn");
 // const userNomLike = document.querySelector(".userNomeSec");
 
+const getUserId_2 = async () => {
+  try {
+    const response = await fetch("/api/sessiondata");
+    const data = await response.json();
+    return data.user.id;
+  } catch (error) {
+    console.error("Error fetching user ID:", error);
+    return null;
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Select all like buttons
+  const likeBtns = document.querySelectorAll(".likeBtn");
+
+  // Add a click event listener to each like button
+  likeBtns.forEach(likeBtn => {
+    likeBtn.addEventListener("click", async function(event) {
+      // Find the closest ancestor with class 'profile'
+      const profileElement = this.closest(".profile");
+
+      if (profileElement) {
+        try {
+          // Extract post ID from the profileElement dataset or other method based on your implementation
+          const postId = profileElement.dataset.postId;
+
+          // Make an asynchronous request to like the post
+          const response = await fetch(`/like/${postId}`, {
+            method: "POST", // Adjust the HTTP method as needed
+            // Add headers if necessary, e.g., "Content-Type": "application/json"
+            // Add body if necessary, e.g., JSON.stringify({ postId })
+          });
+
+          if (response.ok) {
+            console.log("Post Liked!!");
+          } else {
+            console.log("Error: Post could not be liked :(");
+          }
+        } catch (error) {
+          console.error("An error occurred:", error);
+        }
+      }
+    });
+  });
+});
+
+
+// ------------- extra code I am unaware of-------------------------
+
 // const getUserId = async () => {
 //   try {
 //     const response = await fetch("/api/sessiondata");
@@ -56,6 +105,8 @@
 //   const idInNeed = document.querySelector(".idInNeed").textContent;
 //   const userIdForLike = await getUserIDByUsername(userNomLike.textContent);
 
+  // const createLikeObj = async () => {
+  //   const userId = await getUserId_2();
 //   const createLikeObj = async () => {
 //     const userId = await getUserId();
 
@@ -124,40 +175,3 @@
 
 
 
-
-
-
-// // Function to handle the button click
-// async function handleLikePost() {
-//     try {
-//       // Check if the button has the correct class
-//       if (event.target.classList.contains('likeBtn')) {
-        
-//         const post_id = /* logic to get the post ID */;
-  
-//         // Update the Likes model to indicate that the post is liked
-//         const likeRecord = await Likes.create({
-//           Likes_user_id: /* the user ID who clicked the like button */,
-//           is_liked: true,
-//           user_id: /* the user ID who created the post */,
-//           post_id: post_id,
-//           created_at: new Date(),
-//         });
-  
-        
-//         alert('You Liked a Post!!');
-  
-//         // additional actions here, such as updating new like status
-//       } else {
-//         // If the button doesn't have the correct class, throw an error
-//         throw new Error("Can't like post");
-//       }
-//     } catch (error) {
-//       // Display an error message
-//       alert(error.message);
-//     }
-//   }
-  
-
-//   document.addEventListener('click', handleLikePost);
-  

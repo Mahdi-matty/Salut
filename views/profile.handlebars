@@ -1,226 +1,269 @@
-<section class="d-flex bd-highlight flex-column mb-3">
-
-<div class="p-2 bd-highlight">
-<h2 class="userNome" style="color:white">{{users.username}}</h2>
-
-<div class="div-style">
-<div>
-  <div class="input-group mb-3 form-control">
-    <button class="btn btn-outline-secondary usersearchBtn" type="button" id="button-addon1">Search</button>
-    <input type="text" class="form-control" id="searchData" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-  </div>
-
-  <button id="followBtn">
-    <img class="profilePic" width="160" height="160"/>
-  </button>
-</div>
-
-
-<div class="p2">
-  <button id="upload_widget" class="btn-col cloudinary-button">Update Profile Picture
-  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
-
-<script type="text/javascript">
-
-</script> 
-</button>
-</div>
-</div>
-
-<div class="user-btns">
-      <button type="button" class="btn btn-col">
-        Notifications <span class="badge bg-secondary">4</span>
-      </button>
-      <button type="button" class="btn btn-col hov-Bt position-relative">
-    <a href="http://localhost:3000/:userId/chatroom" style="color:white">chatroom</a>
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-      
-      <span class="visually-hidden">unread messages</span>
-    </span>
-  </button>
-  <button type="button" class="btn btn-col hov-Bt position-relative">
-    <a href="http://localhost:3000/:userId/followers" style="color:white">Followers</a>
-    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-      <span class="visually-hidden">New alerts</span>
-    </span>
-  </button>
-  <button type="button" class="btn btn-col hov-Bt position-relative">
-    <a href="http://localhost:3000/:userId/following" style="color:white">Following</a>
-    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-      <span class="visually-hidden">New alerts</span>
-    </span>
-  </button>
-
-  <button type="button" class="btn btn-col hov-Bt position-relative">
-    <a href="http://localhost:3000/:userId/inbox" style="color:white">Inbox</a>
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-      99+
-      <span class="visually-hidden">unread messages</span>
-    </span>
-  </button>
-  <style> 
-    .user-btns {
-      height: 55px;
-      width: 50%;
-      background-color: rgb(231, 185, 99);
-      display: flex;
-      justify-content: left;
-      gap: 15px;
-      padding: 8px;
-
-    }
-    .form-control {
-      width: 50%;
-    }
-    .usersearchBtn:hover {
-      background-color: #57BEE6;
-    }
-    .btn-col {
-      background-color: #57BEE6;
-      color: aliceblue;
-      border-radius: 10px;
-      border: none;
-    }
-    .div-style {
-      height: 300px;
-      width: 50%;
-      background-color: #f8f5e4;
-      padding-bottom: 300px;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 20px;
-      
-    }
-
-    .post-col{
-      height: 220px;
-      width: 50%;
-      background-color: #f8f5e4;
-      padding-left: 15px;
-      color: rgb(99, 96, 96);
-      
-    }
-    .div-two {
-      height: 55px;
-      width: 50%;
-      background-color: rgb(240, 184, 80);
-      display: flex;
-      justify-content: left;
-      gap: 15px;
-      padding: 8px;
-    }
-    .up-btn {
-      border-radius: 50px;
-      height: 50px;
-      margin-top: 8px;
-    }
-     .btn-col:hover {
-      background-color: #e657c2;
-    }
-    .profile-logo{
-      background-color: #d8d6c6;
-      height: 100px;
-      width: 50%;
-      color: ;
-      padding: 18px;
-      margin-top: 8px;
-      border-radius: 8px;
-    }
-  </style>
-</div>
-
-<div id="storyContainer" style="display: none; position: fixed; top: 0;left: 0; width: 100%; height: 100%; ; justify-content: center;
-            align-items: center; background: rgba(0, 0, 0, 0.8)">
-            {{#each user.stories as |sotry|}}
+<section class="d-flex align-items-center bd-highlight bd-highlight flex-column mb-3">
+    <div class="p-2 bd-highlight">
+        <div class="div-two" style="text-align:end;">
+            <h2 class="userNome" style="color:white">{{users.username}}</h2>
+            <style>
+                h2 {
+                    text-align: center;
+                }
+            </style>
+        </div>
+        <div class="div-style">
             <div>
-              {{#if imageSource}}
-              <img src=`{{imageSource}}` alt="Story Image">
-              {{/if}}
+                <div class="input-group mb-3 form-control">
+                    <button class="btn btn-outline-secondary usersearchBtn" type="button"
+                        id="button-addon1">Search</button>
+                    <input type="text" class="form-control" id="searchData" placeholder=""
+                        aria-label="Example text with button addon" aria-describedby="button-addon1">
+                </div>
+                <button id="followBtn">
+                    <img class="profilePic" width="160" height="160" />
+                </button>
+            </div>
+            <div class="p2">
+                <button id="upload_widget" class="btn-col cloudinary-button">Update Profile Picture
+                    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+                    </script>
+                </button>
+            </div>
+        </div>
+        <div class="user-btns">
+            <button type="button" class="btn btn-col">
+                Notifications <span class="badge bg-secondary">4</span>
+            </button>
+            <button type="button" class="btn btn-col hov-Bt position-relative">
+                <a href="http://localhost:3000/:userId/chatroom" style="color:white">chatroom</a>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </button>
+            <button type="button" class="btn btn-col hov-Bt position-relative">
+                <a href="http://localhost:3000/:userId/inbox" style="color:white">Inbox</a>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    99+
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </button>
+            <style>
+                .user-btns {
+                    height: 55px;
+                    width: 100%;
+                    background-color: rgb(231, 185, 99);
+                    display: flex;
+                    justify-content: left;
+                    gap: 15px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    margin-left: 30px;
+                    margin-right: 30px;
+                }
+
+                .form-control {
+                    width: 100%;
+                }
+
+                .usersearchBtn:hover {
+                    background-color: #57BEE6;
+                }
+
+                .btn-col {
+                    background-color: #57BEE6;
+                    color: aliceblue;
+                    border-radius: 10px;
+                    border: none;
+                }
+
+                .div-style {
+                    height: 300px;
+                    width: 100%;
+                    background-color: #f8f5e4;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    margin-left: 30px;
+                    margin-right: 30px;
+                }
+
+                .post-col {
+                    height: 220px;
+                    width: 100%;
+                    background-color: #f8f5e4;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    margin-left: 30px;
+                    margin-right: 30px;
+                    color: rgb(99, 96, 96);
+                }
+
+                .div-two {
+                    height: 55px;
+                    width: 100%;
+                    background-color: rgb(240, 184, 80);
+                    display: flex;
+                    justify-content: left;
+                    gap: 15px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    margin-left: 30px;
+                    margin-right: 30px;
+                }
+
+                .up-btn {
+                    border-radius: 50px;
+                    height: 50px;
+                    margin-top: 8px;
+                }
+
+                .btn-col:hover {
+                    background-color: #e657c2;
+                }
+
+                .profile-logo {
+                    background-color: #d8d6c6;
+                    height: 100px;
+                    width: 50%;
+                    color: ;
+                    padding: 18px;
+                    margin-top: 8px;
+                    border-radius: 8px;
+                }
+            </style>
+        </div>
+        <br>
+        <div class="div-two">
+            <button class="btn btn-col" type="button" data-bs-toggle="collapse" data-bs-target="#followerButton"
+                aria-expanded="false" aria-controls="followerButton">
+                Followers
+            </button>
+            <p></p>
+            <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="followerButton">
+                    <div class="card card-body" style="width: 75%">
+                        <div class="row followColor">
+                            <h3 style="text-align:center">Followers</h3>
+                            <div class="col">
+                                <div id="followers-container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-col" type="button" data-bs-toggle="collapse" data-bs-target="#followingButton"
+                aria-expanded="false" aria-controls="followingButton">
+                Following
+            </button>
+            <p></p>
+            <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="followingButton">
+                    <div class="card card-body" style="width: 75%;">
+                        <div class="row followColor">
+                            <h3 style="text-align:center">Following</h3>
+                            <div class="col">
+                                <div id="following-container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br style="background-color: rgb(231, 185, 99);">
+        <div id="storyContainer" style="display: none; position: fixed; top: 0;left: 0; width: 100%; height: 100%; ; justify-content: center;
+            align-items: center; background: rgba(0, 0, 0, 0.8)">
+            {{#each user.stories as |story|}}
+            <div>
+                {{#if imageSource}}
+                <img src=`{{imageSource}}` alt="Story Image">
+                {{/if}}
             </div>
             {{/each}}
-    <img id="storyImage" style="max-width: 100%; max-height: 100%;" src="", alt="Uploaded Image">
-</div>
-<div>
-  <div>
-  <button id="uploadStory" class="btn-col cloudinary-button">Add to your story.
-  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
-
-<script type="text/javascript">
-
-</script> 
-</div>
-<button id="storyBtn" class="btn btn-col">Post it</button>
-</div>
-<button id="showStory" class="btn btn-col">Show story</button>
-
-<div class="p2 post-col">
-
-  Title :  <input type="text" class="form-control titleSearchProf" id="title basic-url" aria-describedby="basic-addon3">
-  Content : <textarea class="form-control" id = "content" aria-label="With textarea"></textarea>
-
-  <button id="upload_post" class="btn-col cloudinary-button up-btn">Upload an image
-  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>  
-
-<script type="text/javascript">
-
-</script> 
-  <button id ="submitBtn" class="btn btn-col">
-    Post
-  </button>
-</div>
-{{!-- <br> --}}
-{{!-- <br> --}}
-
-
-<div class="p-2 bd-highlight div-two">
-    <p>
-    <a class="btn btn-col" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Lets Chat
-    </a>
-    </p>
-    <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-        <div>
-            <ul class="ugad"></ul>
+            <img id="storyImage" style="max-width: 100%; max-height: 100%;" src="" , alt="Uploaded Image">
         </div>
-        <form class="ufad">
-                <label for="messageInput">Message:</label>
-                <input type="text" id="messageInput" name="messageInput" />
-                <button type="submit" id="usent" title="Send">Send</button>
-        </form>
-    </div>
-    </div>
+        <div class="div-two">
+            <div>
+                <button id="uploadStory" class="btn-col cloudinary-button">Add to your story.
+                    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                    </script>
+            </div>
+            <button id="storyBtn" class="btn btn-col">Post it</button>
+            <button id="showStory" class="btn btn-col">Show story</button>
+        </div>
+        <br>
+        <div class="p2 post-col">
+            Title : <input type="text" class="form-control titleSearchProf" id="title basic-url"
+                aria-describedby="basic-addon3">
+            Content : <textarea class="form-control" id="content" aria-label="With textarea"></textarea>
+            <button id="upload_post" class="btn-col cloudinary-button up-btn">Upload an image
+                <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                </script>
+                <button id="submitBtn" class="btn btn-col">
+                    Post
+                </button>
+        </div>
+        <div class="p-2 bd-highlight div-two">
+            <p>
+                <a class="btn btn-col" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    Lets Chat
+                </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div>
+                        <ul class="ugad"></ul>
+                    </div>
+                    <form class="ufad">
+                        <label for="messageInput">Message:</label>
+                        <input type="text" id="messageInput" name="messageInput" />
+                        <button type="submit" id="usent" title="Send">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="tweets">
+            <ul class="list-group">
+                <span><img src="{{users.profilePic}}" width="60" height="60" style="border-radius: 50%" />
+                    {{users.username}}</span>
+                {{#each users.Posts as |post|}}
+                {{> profile-details}}
+                {{/each}}
+            </ul>
+        </div>
 
+        <style>
+            .tweets {
+                width: 100%;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 30px;
+                margin-right: 30px;
+                background-color: #84c0da;
+            }
+        </style>
 
-</div>
-
-
-<div class="p2 bd-highlight">
-
-<div class="profile-logo">
-<span><img src = "{{users.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{users.username}}</span>
-</div>
-{{#each users.Posts as |post|}}
-
-    {{> profile-details}}
-  
-{{/each}}
-
-
-</div>
-
-<script src="/js/folowbtn.js"></script>
-<script src="/js/search.js"></script>
-<script src="/js/delete.js"></script>
-<script src="/js/like.js"></script>
-<script src="/js/story.js"></script>
-<!-- Include Socket.IO library -->
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/profile.js"></script>
-<script src="/js/chat.js"></script>
-<script src="/js/uploadPost.js"></script>
-
-
-
+        <script src="/js/folowbtn.js"></script>
+        <script src="/js/search.js"></script>
+        <script src="/js/delete.js"></script>
+        <script src="/js/like.js"></script>
+        <script src="/js/story.js"></script>
+        <!-- Include Socket.IO library -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/profile.js"></script>
+        <script src="/js/chat.js"></script>
+        <script src="/js/uploadPost.js"></script>
+        <script src="/js/followers.js"></script>
+        <script src="/js/followings.js"></script>
+        <script src="/js/folowbtn.js"></script>
+        <script src="/js/search.js"></script>
+        <script src="/js/delete.js"></script>
+        <script src="/js/like.js"></script>
+        <script src="/js/story.js"></script>
+        <!-- Include Socket.IO library -->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/profile.js"></script>
+        <script src="/js/chat.js"></script>
+        <script src="/js/uploadPost.js"></script>
 </section>
-
