@@ -90,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // liksBtns.addEventListener("click", async function(event) {
 //   const likeBtn = event.target.closest(".likeBtn");
 //   if (!likeBtn) {
+//     console.log('hello world');
 //     return;
 //   }
 
@@ -151,7 +152,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+ // Function to handle the button click
+  async function handleLikePost() {
+    try {
+      // Check if the button has the correct class
+      if (event.target.classList.contains('likeBtn')) {
+        // Display a success message
+        alert('You Liked a Post!!');
+      } else {
+        // If the button doesn't have the correct class, throw an error
+        throw new Error("Can't like post");
+      }
+    } catch (error) {
+      // Display an error message
+      alert(error.message);
+    }
+  }
 
+  // Attach the handleLikeClick function to the click event of the document
+  document.addEventListener('click', handleLikePost);
 
 
 
