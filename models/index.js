@@ -4,7 +4,23 @@ const Follow= require("./follow");
 const Posts = require('./posts');
 const followedBy = require("./followedBy");
 const followsTo = require("./followsTo");
+const comment = require("./comments");
+const Message = require("./message");
 
+comment.belongsTo(Posts, {
+    foreignKey:`post_id`,
+})
+
+Posts.hasMany(comment,{
+    foreignKey:`post_id`,
+})
+
+User.hasMany(comment,{
+    foreignKey:`user_id`,
+})
+comment.belongsTo(User,{
+    foreignKey:`user_id`,
+})
 
 Likes.belongsTo(Posts, {
     foreignKey:'post_id',
@@ -46,6 +62,16 @@ User.hasMany(Posts,{
     foreignKey:'user_id',
 });
 
+Message.belongsTo(User, {
+    foreignKey: "sender_id",
+    as: "sender"
+});
+Message.belongsTo(User, {
+    foreignKey: "reciver_id",
+    as: 'reciver'
+})
+
+
 Follow.hasOne(User, {
     foreignKey: "following_user_id",
     as: "followers",
@@ -75,5 +101,6 @@ module.exports = {
     Posts,
     Follow,
     followedBy,
-    followsTo
+    followsTo,
+    Message
 };

@@ -8,111 +8,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-        <a class="nav-link" href="#">Followers</a>
-        <a class="nav-link" href="#">Following</a>
+        <a class=" active" aria-current="page" href="/profile">Profile</a>
+        <a class="" href="#">Followers</a>
+        <a class="" href="#">Following</a>
       </div>
     </div>
   </div>
 </div>
-
-{{!-- Added Ryans changes above --}}
-<div class="p-2 bd-highlight">
-
-</div>
-
-
-<section class="tweets">
-  <div class="welcome">
-    <h1>Welcome to Salut</h3>
-    <h3>The better verstion of twitter</h3>
-    <p>Please Sign-up and create an account today or 
-    login <a href="http://localhost:3000/login">here</a> if you already have an existing account</p>
-  </div>
-  <div class="form-div">
-<form>
-  <div class="mb-3">
-     <h3 class="custom-text-color">Sign-up</h3>
-    <label for="exampleInputEmail1" class="form-label custom-text-color">Email address</label>
-    <style>
-  .custom-text-color {
-    color: #fcfcfc; /* Replace with your desired color code */
-  }
-  .form-div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 80px;
-    }
-    .welcome {
-      margin-top: 50px;
-      margin-left: 200px;
-      color: #fcfcfc;
-    }
-</style>
-    <input type="email" class="form-control emailNeeded" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-
-    <label for="exampleInputEmail1" class="form-label custom-text-color">Username</label>
-    <input type="text" class="form-control userNameNeeded" id="exampleInputEmail1" name="username" aria-describedby="emailHelp">
-    {{!-- <div id="emailHelp" class="form-text">Please choose a unique username.</div> --}}
-
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label custom-text-color">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-    <div id="emailHelp" class="form-text">Password must be 8 characters long.</div>
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label receive-text" for="exampleCheck1">Receive emails from Salut</label>
-    <style>
-  .receive-text {
-    color: #3D424A; 
-  }
-</style>
-  </div>
-  <button type="submit" class="btn custom-btn-color" id="signUpForm">Submit</button>
-  <style>
-  .custom-btn-color {
-    background-color: #f06445; 
-    color: #ffffff; 
-    
-  }
-</style>
-</form>
-</div>
-
-<style>
-  .tweets {
-    background-color: #57BEE6;
-    height: 800px;
-    width: 800px;
-    margin-top: 30px;
-    margin-left: 300px;
-    border-radius: 10px;
-  }
-</style>
-</section>
-{{!-- Added Ryans changes above --}}
-
-
-
 
 {{#each posts as |post|}}
 
 
   {{> home-details}}
 {{/each}}
-
-
-
-    {{!-- <p>
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Lets Chat
-    </a>
-    </p> --}}
-    <div class="collapse" id="collapseExample">
+<style>
+  a {
+    color: #FFE5C1; /* Default color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+     margin-right: 10px;
+}
+/* Style for when the link is being hovered */
+a:hover {
+    color: #943ce7; /* Custom color on hover */
+}
+</style>
+    {{!-- <div class="collapse" id="collapseExample">
     <div class="card card-body">
         <div>
             <ul class="ugad"></ul>
@@ -123,7 +44,7 @@
                 <button type="submit" id="usent" title="Send">Send</button>
         </form>
     </div>
-    </div>
+    </div> --}}
 
 
 
@@ -133,4 +54,6 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/chat.js"></script>
+<script src="/js/comments.js"></script>
+
 </section>

@@ -10,7 +10,9 @@ const htmlRoutes= require("./htmlRoutes");
 const followedByRoutes = require("./followedByRoutes");
 const followsToRoutes = require("./followsToRoutes");
 
+const commentRoutes = require("./commentRoutes");
 const bcrypt = require("bcrypt");
+const messageRoutes = require("./messageRoutes");
 
 
 // remove this
@@ -31,6 +33,8 @@ router.use("/api/",autRoutes);
 router.use("/api/follow", followRoutes);
 router.use("/api/followsTo", followsToRoutes);
 router.use("/api/followedBy", followedByRoutes);
+router.use("/api/comments", commentRoutes);
+router.use("/api/message", messageRoutes);
 
 
 // router.get("/",(req,res)=>{
