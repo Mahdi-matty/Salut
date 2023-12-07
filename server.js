@@ -11,6 +11,8 @@ const http = require('http').createServer(app);
 const io=require('socket.io')(http);
 const PORT = process.env.PORT || 3000;
 const Room = require("./room");
+require("./scheduler");
+
 
 
 app.use(express.static('public'));

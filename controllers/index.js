@@ -10,6 +10,7 @@ const htmlRoutes= require("./htmlRoutes");
 const commentRoutes = require("./commentRoutes");
 const bcrypt = require("bcrypt");
 const messageRoutes = require("./messageRoutes");
+const storyRoutes = require("./storyRoutes");
 
 
 // remove this
@@ -30,6 +31,7 @@ router.use("/api/",autRoutes);
 router.use("/api/follow", followRoutes);
 router.use("/api/comments", commentRoutes);
 router.use("/api/message", messageRoutes);
+router.use("/api/story", storyRoutes);
 
 
 // router.get("/",(req,res)=>{

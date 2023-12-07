@@ -4,6 +4,14 @@ const Posts = require('./posts');
 const follow= require("./follow");
 const comment = require("./comments");
 const Message = require("./message");
+const Story = require("./story");
+
+Story.belongsTo(User, {
+    foreignKey: 'teller_id',
+});
+User.hasOne(Story, {
+    foreignKey: "teller_id",
+})
 
 comment.belongsTo(Posts, {
     foreignKey:`post_id`,
@@ -73,5 +81,6 @@ module.exports = {
     User,
     Posts,
     follow,
-    Message
+    Message,
+    Story
 };
