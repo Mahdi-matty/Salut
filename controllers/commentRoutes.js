@@ -4,6 +4,7 @@ const Comment  = require('../models/comments');
 
 router.post('/', async (req, res) => {
   try {
+    console.log('Enters to comments');
     const { text, user_id, post_id } = req.body;
 
     const newComment = await Comment.create({ text, user_id, post_id });

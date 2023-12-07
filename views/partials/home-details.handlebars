@@ -1,7 +1,6 @@
 <p style="color:aliceblue"></p>
 <div id="tweets" data-post-id="{{post.id}}" data-user-id="{{User.id}}" class="tweets">
   <ul class="list-group">
-
 <span><img src = "{{User.profilePic}}" width="60" height="60" style = "border-radius: 50%"/> {{User.username}}</span>
   {{#each (processTitle title) as |wordObj|}}
         <a href="/api/posts/search?tag={{wordObj.word}}" class = "list-group-item">{{wordObj.word}}</a>

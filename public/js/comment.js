@@ -22,7 +22,6 @@ document.querySelectorAll(".commentForm").forEach(function (form) {
         },
         body: JSON.stringify(commentObj),
       });
-      console.log(response);
 
       localStorage.setItem('scrollPosition', window.scrollY);
 
