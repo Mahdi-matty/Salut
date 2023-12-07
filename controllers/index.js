@@ -13,6 +13,7 @@ const followsToRoutes = require("./followsToRoutes");
 const commentRoutes = require("./commentRoutes");
 const bcrypt = require("bcrypt");
 const messageRoutes = require("./messageRoutes");
+const storyRoutes = require("./storyRoutes");
 
 
 // remove this
@@ -35,6 +36,7 @@ router.use("/api/followsTo", followsToRoutes);
 router.use("/api/followedBy", followedByRoutes);
 router.use("/api/comments", commentRoutes);
 router.use("/api/message", messageRoutes);
+router.use("/api/story", storyRoutes);
 
 
 // router.get("/",(req,res)=>{
