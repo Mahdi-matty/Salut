@@ -1,0 +1,269 @@
+<section class="d-flex align-items-center bd-highlight flex-column mb-3">
+  {{!-- <section class="d-flex justify-content-center align-items-center vh-100"></section> --}}
+  <div class="bd-highlight">
+    <div class=" bd-highlight">
+      <h2 class="userNome" style="color:white">{{users.username}}</h2>
+      <div class="div-style">
+
+        <div class="p2 input-group mb-3 form-control">
+          <button class="btn btn-outline-secondary usersearchBtn" type="button" id="button-addon1">Search</button>
+          <input type="text" class="form-control" id="searchData" placeholder=""
+            aria-label="Example text with button addon" aria-describedby="button-addon1">
+        </div>
+        <div class="p2">
+          <button id="followBtn">
+            <img class="profilePic" width="160" height="160" />
+          </button>
+        </div>
+        <br>
+        <div class="p2">
+          <button id="upload_widget" class="btn-col cloudinary-button">Update Profile Picture
+            <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+          </button>
+
+        </div>
+
+        <br>
+        <div class="p2">
+          <div>
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#followerButton"
+              aria-expanded="false" aria-controls="followerButton">
+              Followers new
+            </button>
+            <p></p>
+            <div style="min-height: 120px;">
+              <div class="collapse collapse-horizontal" id="followerButton">
+                <div class="card card-body" style="width: 75%">
+                  <div class="row followColor">
+                    <h3 style="text-align:center">Followers</h3>
+                    <div class="col">
+                      <div id="followers-container">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div>
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#followingButton"
+              aria-expanded="false" aria-controls="followingButton">
+              Following new
+            </button>
+            <p></p>
+            <div style="min-height: 120px;">
+              <div class="collapse collapse-horizontal" id="followingButton">
+                <div class="card card-body" style="width: 75%;">
+                  <div class="row followColor">
+                    <h3 style="text-align:center">Following</h3>
+                    <div class="col">
+                      <div id="following-container">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="p2 user-btns">
+          <button type="button" class="btn btn-col">
+            Notifications <span class="badge bg-secondary">4</span>
+          </button>
+          {{!-- <button type="button" class="btn btn-primary position-relative">
+            <a href="/api/follow/:userId/followers/showFollower" style="color:white">Followers</a>
+          </button> --}}
+          <button type="button" class="btn btn-col hov-Bt position-relative">
+            <a href="/:userId/chatroom" style="color:white">chatroom</a>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </button>
+
+          {{!-- <a href="/:userId/followers" style="color:white">Followers</a>
+          <span
+            class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+            <span class="visually-hidden">New alerts</span>
+          </span> --}}
+          {{!-- <button type="button" class="btn btn-primary position-relative">
+            <a href="/:userId/following" style="color:white">Following</a>
+            <span
+              class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+              <span class="visually-hidden">New alerts</span>
+            </span>
+          </button> --}}
+
+          <button type="button" class="btn btn-col hov-Bt position-relative">
+            <a href="/:userId/inbox" style="color:white">Inbox</a>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              99+
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </button>
+          <style>
+            .user-btns {
+              height: 100%;
+              width: 100%;
+              background-color: rgb(221, 154, 32);
+              display: flex;
+              justify-content: left;
+              gap: 15px;
+              padding: 8px;
+              border-style:solid;
+
+              border-color:white;
+              border-width: 5px;
+
+            }
+
+            .form-control {
+              width: 50%;
+            }
+
+            .usersearchBtn:hover {
+              background-color: #57BEE6;
+            }
+
+            .btn-col {
+              background-color: #57BEE6;
+              color: aliceblue;
+              border-radius: 10px;
+              border: none;
+            }
+
+            .div-style {
+              height: 25%;
+              width: 100%;
+              background-color: rgb(244, 185, 95);
+              padding-bottom: 300px;
+              padding-left: 20px;
+              padding-right: 20px;
+              padding-top: 20px;
+
+            }
+
+            .post-col {
+              height: 220px;
+              width: 50%;
+              background-color: #f8f5e4;
+              padding-left: 15px;
+              color: rgb(99, 96, 96);
+
+            }
+
+            .div-two {
+              height: 55px;
+              width: 50%;
+              background-color: rgb(240, 184, 80);
+              display: flex;
+              justify-content: left;
+              gap: 15px;
+              padding: 8px;
+            }
+
+            .up-btn {
+              border-radius: 50px;
+              height: 50px;
+              margin-top: 8px;
+            }
+
+            .btn-col:hover {
+              background-color: #e657c2;
+            }
+
+            .profile-logo {
+              background-color: #d8d6c6;
+              height: 100px;
+              width: 50%;
+              color: ;
+              padding: 18px;
+              margin-top: 8px;
+              border-radius: 8px;
+            }
+          </style>
+        </div>
+
+        <div class="p2 post-col">
+
+          Title : <input type="text" class="form-control titleSearchProf" id="title basic-url"
+            aria-describedby="basic-addon3">
+          Content : <textarea class="form-control" id="content" aria-label="With textarea"></textarea>
+
+          <button id="upload_post" class="btn-col cloudinary-button up-btn">Upload an image
+            <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+            <script type="text/javascript">
+
+            </script>
+            <button id="submitBtn" class="btn btn-col">
+              Post
+            </button>
+        </div>
+
+        <div class="p-2 bd-highlight div-two">
+          <p>
+            <a class="btn btn-col" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+              aria-controls="collapseExample">
+              Lets Chat
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <div>
+                <ul class="ugad"></ul>
+              </div>
+              <form class="ufad">
+                <label for="messageInput">Message:</label>
+                <input type="text" id="messageInput" name="messageInput" />
+                <button type="submit" id="usent" title="Send">Send</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class=" p2 bd-highlight">
+
+          <div class="profile-logo">
+            <span><img src="{{users.profilePic}}" width="60" height="60" style="border-radius: 50%" />
+              {{users.username}}</span>
+          </div>
+          {{#each users.Posts as |post|}}
+
+          {{> profile-details}}
+
+          {{/each}}
+
+
+        </div>
+        {{!-- END HERE --}}
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="/js/follow.js"></script>
+  <script src="/js/folowbtn.js"></script>
+  <script src="/js/search.js"></script>
+  <script src="/js/delete.js"></script>
+  <script src="/js/like.js"></script>
+  <!-- Include Socket.IO library -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/profile.js"></script>
+  <script src="/js/chat.js"></script>
+  <script src="/js/uploadPost.js"></script>
+  <script src="/js/followers.js"></script>
+  <script src="/js/followings.js"></script>
+
+
+
+
+</section>

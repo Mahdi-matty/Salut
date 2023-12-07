@@ -1,21 +1,24 @@
-
-
 <p style="color:aliceblue"></p>
-<div class="profile" data-post-id="{{id}}">
+<div class="tweet" data-post-id="{{id}}">
   <ul class="list-group">
-   
-  {{#each (processTitle title) as |wordObj|}}
-        <a href="/api/posts/search?tag={{wordObj.word}}">{{wordObj.word}}</a>
+
+    {{#each (processTitle title) as |wordObj|}}
+    {{!-- <a href="/api/posts/search?tag={{wordObj.word}}">{{wordObj.word}}</a> --}}
     {{/each}}
-  <li class="list-group-item">{{content}}</li>
-  {{#if imageSource}}
-  <li class="list-group-item"><img src="{{imageSource}}" width="500" height="500"/></li>
-    
-  {{/if}}
-  <br>
-</ul>
-<button class="like-btn likeBtn" id="likeBtn">Like</button>
-<button class="delete-btn deleteBtn" id="deleteBtn">Delete</button>
+
+    <div class="list-group-item">
+
+      {{title}}
+    </div>
+    {{#if imageSource}}
+    <li class="list-group-item"><img src="{{imageSource}}" width="100%" height="100%" /></li>
+
+    {{/if}}
+    <li class="list-group-item">{{content}}</li>
+    <br>
+  </ul>
+  <button class="like-btn likeBtn" id="likeBtn">Like</button>
+  <button class="delete-btn deleteBtn" id="deleteBtn">Delete</button>
 </div>
 
 <style>
@@ -29,6 +32,7 @@
     border: none;
     border-radius: 5px;
   }
+
   .delete-btn {
     background-color: #57BEE6;
     color: #222121;
@@ -39,18 +43,22 @@
     border: none;
     border-radius: 5px;
   }
+
   .like-btn:hover {
-      background-color: #e657c2;
-    }
+    background-color: #e657c2;
+  }
+
   .delete-btn:hover {
-      background-color: #e657c2;
-    }
+    background-color: #e657c2;
+  }
+
   .profile {
     background-color: orange;
     width: 60%;
     padding: 20px;
     border-radius: 5px;
   }
+
   .list-group-item {
     border-radius: 8px;
   }
